@@ -29,9 +29,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #'authentication',
+    'django.contrib.humanize',
     'expenses',
     'djmoney',
     'import_export',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -45,13 +48,15 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+LOGIN_REDIRECT_URL = "expenses"   # Route defined in app/urls.py
+LOGOUT_REDIRECT_URL = "expenses"  # Route defined in app/urls.py
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,7 +89,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -143,3 +148,6 @@ SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 '''
+
+CURRENCIES = ('EGP', 'USD', 'EUR', 'AED')
+CURRENCY_CHOICES = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')]

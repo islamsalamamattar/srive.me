@@ -1,0 +1,88 @@
+{% load static %}
+		<!-- BEGIN #sidebar -->
+		<div id="sidebar" class="sidebar sidebar-inverse">
+			<!-- BEGIN scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- BEGIN nav -->
+				<ul class="nav">
+					<li class="nav-profile">
+						<div class="image">
+							<!-- <img src="{% static 'assets/img/reparoiconyellow.png' %}" /> -->
+						</div>
+						<div class="info">
+							<h4>{{ user }}</h4>
+							<p>{{ user.email }}</p>
+						</div>
+					</li>
+					<li class="nav-divider"></li>
+					<li class="nav-header text-white"></i>EXPENSES</li>
+					<li {% if 'Expenses' in segment %} class="active" {% endif %}><a href="{% url 'expenses' %}"><i class="ti-stats-down"></i><span>EXPENSES</span></a></li>
+					<li {% if 'Analytics' in segment %} class="active" {% endif %}><a href="{% url 'analytics' %}"><i class="ti-dashboard"></i><span>ANALYTICS</span></a></li>
+					<li {% if 'subscriptions' in segment %} class="active" {% endif %}><a href="#"><i class="ti-receipt"></i><span>SUBSCRIPTIONS</span></a></li>
+					<li {% if 'installments' in segment %} class="active" {% endif %}><a href="#"><i class="ti-pie-chart"></i><span>INSTALLMENTS</span></a></li>
+					<li class="nav-divider"></li>
+					<li class="nav-header text-white">TO DO</li>
+					<li {% if 'todo_work' in segment %} class="active" {% endif %}><a href="#"><i class="ti-pencil-alt"></i><span>WORK</span></a></li>
+					<li {% if 'todo_programming' in segment %} class="active" {% endif %}><a href="#"><i class="ti-desktop"></i><span>PROGRAMING</span></a></li>
+					<li {% if 'todo_personal' in segment %} class="active" {% endif %}><a href="#"><i class="ti-image"></i><span>PERSONAL</span></a></li>
+					<li class="nav-divider"></li>
+					<li class="nav-header text-white">SHOPPING LIST</li>
+					<li {% if 'shopping_groceries' in segment %} class="active" {% endif %}><a href="#"><i class="ti-shopping-cart"></i><span>GROCERIES</span></a></li>
+					<li {% if 'shopping_gadgets' in segment %} class="active" {% endif %}><a href="#"><i class="ti-headphone"></i><span>GADGETS</span></a></li>
+					<li {% if 'shopping_online' in segment %} class="active" {% endif %}><a href="#"><i class="ti-world"></i><span>ONLINE</span></a></li>
+		
+					<li class="nav-divider"></li>
+					<li class="nav-header text-white">SAVINGS</li>
+					<li class="nav-project">
+						<a href="#">
+							<div class="project-icon">
+								<i class="ti-mobile"></i>
+							</div>	
+							<div class="project-info">
+								<span class="pull-right project-percentage">70%</span>
+								<h4 class="project-title">New monitor 27" - EGP 3,300</h4>
+								<div class="progress progress-xs">
+									<div class="progress-bar bg-theme" style="width: 70%;" role="progressbar"></div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="nav-project">
+						<a href="#">
+							<div class="project-icon">
+								<i class="ti-headphone"></i>
+							</div>	
+							<div class="project-info">
+								<span class="pull-right project-percentage">40%</span>
+								<h4 class="project-title">Europe trip - EGP 15,500</h4>
+								<div class="progress progress-xs">
+									<div class="progress-bar bg-theme" style="width: 40%;" role="progressbar"></div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="nav-project">
+						<a href="#">
+							<div class="project-icon">
+								<i class="ti-github"></i>
+							</div>	
+							<div class="project-info">
+								<span class="pull-right project-percentage">50%</span>
+								<h4 class="project-title">New dishwasher - EGP 8,500</h4>
+								<div class="progress progress-xs">
+									<div class="progress-bar bg-theme" style="width: 50%;" role="progressbar"></div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="nav-divider"></li>
+					<li class="nav-copyright">&copy; 2022 srive.me All Right Reserved</li>
+				</ul>
+				<!-- END nav -->
+			</div>
+			<!-- END scrollbar -->
+			<!-- BEGIN sidebar-minify-btn -->
+			<a href="#" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="ti-arrow-left"></i></a>
+			<!-- END sidebar-minify-btn -->
+		</div>
+		<!-- END #sidebar -->
