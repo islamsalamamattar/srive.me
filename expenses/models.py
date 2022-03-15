@@ -4,7 +4,7 @@ from django.db import models
 from django.db.models import Sum
 from datetime import *
 from django.conf import settings
-from djmoney.models.fields import MoneyField
+#from djmoney.models.fields import MoneyField
 from django.forms import ModelForm
 
 # Expense Categories

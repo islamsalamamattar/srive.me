@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-# from decouple import config
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,13 +10,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = config("SECRET_KEY")
+#SECRET_KEY = config("SECRET_KEY")
 SECRET_KEY = 'django-insecure-=y(i+054_50&n1qc(1c_*rd%a%+h%*_insfk2!e$6&qlusades'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = ['172.105.68.51', 'srive.me', '127.0.0.1' ]
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['139.162.145.8', 'srive.me', '127.0.0.1' ]
 
 
 # Application definition
@@ -29,12 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #'authentication',
     'django.contrib.humanize',
     'expenses',
-    'djmoney',
+    #'djmoney',
     'import_export',
-    'widget_tweaks',
+    #'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -74,17 +74,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'database',
         'USER': 'admin',
-        'PASSWORD': 'password123',
+        'PASSWORD': 'db@2022',
         'HOST': 'localhost',
         'PORT': '',
     }
 }
+
+
 '''
 DATABASES = {
     'default': {
@@ -92,7 +94,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -132,7 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  #, '/home/admin/env/lib/python3.8/site-packages/django/contrib/admin/static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  #, '~/srive.env/lib/python3.8/site-packages/django/contrib/admin/static'
 
 STATIC_ROOT = 'static_root/'
 
@@ -141,13 +143,12 @@ STATIC_ROOT = 'static_root/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-'''
 # CSRF HTTPS configurations
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-'''
+
 
 CURRENCIES = ('EGP', 'USD', 'EUR', 'AED')
 CURRENCY_CHOICES = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')]
