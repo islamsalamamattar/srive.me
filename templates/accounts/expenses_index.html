@@ -1,0 +1,184 @@
+{% extends 'frontend/layouts/base.html' %}	
+
+{% block title %} expenses {% endblock title %}
+{% load djmoney %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+	<!-- BEGIN #content -->
+
+		<!-- BEGIN row -->
+		<div class="row">
+			<!-- BEGIN col-6 -->
+			<div class="col-lg-6 col-sm-12">
+
+
+				<div class="row">
+					<div class="col-12">
+						<!-- BEGIN Add_expense -->
+						<div class="widget-reminder-header bg-gradient-blue" style="color: white;">ADD EXPENSE</div>
+						
+						<div class="panel panel-inverse">
+							<div class="panel-body inverse-mode">
+								<form action="{% url 'expenses' %}" method="POST" name="Add_expense">
+									{% csrf_token %}
+									<!-- BEGIN row -->
+									<div class="row">
+										<!-- BEGIN amount -->
+										<div class="form-group col-5">
+											<input type="text" class="form-control" name="amount" placeholder="AMOUNT">
+										</div>
+										<!-- END amount -->
+
+										<!-- BEGIN currency -->
+										<div class="form-group col-2">
+											<select class="form-control" name="currency">
+												{% for currency in context.currencies %}
+												<option value="{{ currency }}">{{ currency }}</option>
+												{% endfor %}
+											</select>
+										</div>
+										<!-- END currency -->
+
+										<!-- BEGIN select card -->		
+										<div class="form-group col-5">
+											<select class="form-control" name="payment">
+												<option selected disabled>select payment method</option>
+												{% for card in context.cards %}
+												<option value="{{ card.id }}">{{ card }}</option>
+												{% endfor %}
+											</select>
+										</div>											
+									<!-- END select card -->
+									</div>
+									<!-- END row -->
+									
+									<!-- BEGIN row -->
+									<div class="row">
+										<!-- BEGIN select category -->		
+										<div class="form-group col-6">
+											<select class="form-control" name="category">
+												<option selected disabled>select category</option>
+												{% for category in context.categories %}
+												<option value="{{ category.id }}">{{ category }}</option>
+												{% endfor %}
+											</select>
+										</div>											
+										<!-- END select category -->
+										<!-- BEGIN select store -->		
+										<div class="form-group col-6">
+
+											<button type="submit" class="btn bg-gradient-blue col-12">
+												<div class=""><i class="ti-save"></i>&nbsp; Expense </div>
+											</button>											
+
+										</div>									
+									<!-- END select category -->
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row"><div class="col-12"></div></div>
+
+				<div class="row">
+					<!-- BEGIN Expenses Summary -->
+					<div class="col-12">	
+						<div class="widget-reminder-header bg-gradient-blue " style="color: white;">EXPENSES SUMMARY</div>			
+						<ul class="widget widget-list inverse-mode">
+							{{ context.summary.key }}
+
+							{% for category, total in context.summary.items %}
+							
+							<li>
+								
+								<div class="widget-list-container">
+									<div class="widget-list-media icon ">
+										{% if category.icon %}
+										<i class="{{ category.icon }} {{ category.color}}"></i>
+										
+										{% else %}
+										<i class="ti-wallet bg-gradient-blue-dark"></i>
+										{% endif %}
+									</div>
+									<div class="widget-list-content">
+										<h4 class="widget-title">{{ category }} : EGP {{ total|intcomma }}</h4>
+										<div class="widget-desc"></div>
+									</div>
+									<div class="widget-list-action">
+										<div class="dropdown dropdown-icon">
+											<a href="#" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
+											<ul class="dropdown-menu dropdown-menu-right">
+												<li><a href="#">Details</a></li>
+												<li><a href="#">Analytics</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<!-- END Expenses Summary -->
+
+
+				</div>
+			</div>
+			<!-- END col-6 -->
+
+			<!-- BEGIN Latest Expenses -->
+			<div class="col-lg-6 col-sm-12">	
+				<div class="widget-reminder-header bg-gradient-blue" style="color: white;">LATEST EXPENSES</div>			
+				<ul class="widget widget-list inverse-mode">
+					{% for expense in context.history %}
+					<li>
+						<div class="widget-list-container">
+							<div class="widget-list-media icon">
+								<i class="{{ expense.category.icon }} {{ expense.category.color}}"></i>
+							</div>
+							<div class="widget-list-content">
+								<h4 class="widget-title">{{ expense.category }} - {{ expense.currency}} {{ expense.amount|intcomma }}</h4>
+								<div class="widget-desc">{{ expense.date }} - {{ expense.store }} </div>
+							</div>
+							<div class="widget-list-action">
+								<div class="dropdown dropdown-icon">
+									<a href="#" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li><a href="#">View</a></li>
+										<li><a href="#">Analytics</a></li>
+										<li><a href="#">Report</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<!-- END Latest Expenses -->
+
+		</div>
+
+	<!-- END #content -->
+{% endblock content %}
+
+{% block javascripts %}
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{% static 'assets/plugins/form/bootstrap-wizard/js/bootstrap-wizard.min.js' %}"></script>
+	<script src="{% static 'assets/js/page/form-wizards.demo.min.js' %}"></script>
+	<script src="{% static 'assets/plugins/chart/chart-js/Chart.min.js' %}"></script>
+	<script src="{% static 'assets/js/page/chart.demo.js' %}"></script>
+	<script src="{% static 'assets/js/apps.min.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			FormWizards.init();
+			ChartJs.init();
+		});
+	</script>
+
+{% endblock javascripts %}
