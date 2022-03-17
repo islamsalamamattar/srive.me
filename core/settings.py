@@ -143,13 +143,12 @@ STATIC_ROOT = 'static_root/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-'''
 # CSRF HTTPS configurations
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-'''
+
 
 CURRENCIES = ('EGP', 'USD', 'EUR', 'AED')
 CURRENCY_CHOICES = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')]
