@@ -31,7 +31,7 @@ def ExpenseIndex(request):
             return redirect( 'expenses' )
         else:
             msg = form.error_class
-            return render(request, 'accounts/expenses_index.html', { 'segment': "Expenses", 'msg':msg})
+            return render(request, 'frontend/expenses_index.html', { 'segment': "Expenses", 'msg':msg})
 
     else:
         context = Expense.objects.get_context(request.user)
@@ -50,4 +50,4 @@ def ExpenseIndex(request):
         context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
         form = ExpenseForm()
         msg = None
-        return render(request, 'accounts/expenses_index.html', {'context':context, 'form':form, 'segment': "Expenses", 'msg':msg})
+        return render(request, 'frontend/expenses_index.html', {'context':context, 'form':form, 'segment': "Expenses", 'msg':msg})

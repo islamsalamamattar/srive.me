@@ -15,9 +15,9 @@ SECRET_KEY = 'django-insecure-=y(i+054_50&n1qc(1c_*rd%a%+h%*_insfk2!e$6&qlusades
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['139.162.145.8', 'srive.me' ]
+ALLOWED_HOSTS = ['172.105.68.51', 'srive.me', 'localhost' ]
 
 
 # Application definition
@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'database',
         'USER': 'admin',
-        'PASSWORD': 'db@2022',
+        'PASSWORD': 'db@123',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -134,7 +134,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static") , 'home/admin/srive.env/lib/python3.8/site-packages/django/contrib/admin/static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static") , '/home/admin/srive.env/lib/python3.8/site-packages/django/contrib/admin/static']
 
 STATIC_ROOT = 'static_root/'
 
@@ -143,12 +143,13 @@ STATIC_ROOT = 'static_root/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+'''
 # CSRF HTTPS configurations
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-
+'''
 
 CURRENCIES = ('EGP', 'USD', 'EUR', 'AED')
 CURRENCY_CHOICES = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')]
