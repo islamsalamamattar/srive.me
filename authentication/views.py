@@ -28,7 +28,7 @@ def login_view(request):
                 login(request, user)
                 return redirect( 'expenses' )
             else:    
-                msg = 'Invalid credentials'    
+                msg = form    
         else:
             msg = 'Error validating the form'    
 
@@ -41,6 +41,7 @@ def register_user(request):
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
+        print(form)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
