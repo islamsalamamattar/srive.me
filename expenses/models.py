@@ -7,7 +7,7 @@ from django.conf import settings
 #from djmoney.models.fields import MoneyField
 from django.forms import ModelForm
 
-# Expense Categories
+# Expense Category types
 class Category_type(models.Model):
     name = models.CharField(max_length=25)
     color = models.CharField(max_length= 64, null=True, blank=True)
@@ -19,7 +19,7 @@ class Category_type(models.Model):
 # Expense Categories
 class Category(models.Model):
     name = models.CharField(max_length=25)
-    category_type = models.ManyToManyField(Category_type, null=True, blank=True)
+    category_type = models.ForeignKey(Category_type, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     icon = models.CharField(max_length= 64, null=True, blank=True)
     def __str__(self):
