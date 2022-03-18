@@ -8,11 +8,20 @@ from django.conf import settings
 from django.forms import ModelForm
 
 # Expense Categories
+class Category_type(models.Model):
+    name = models.CharField(max_length=25)
+    color = models.CharField(max_length= 64, null=True, blank=True)
+    def __str__(self):
+        return f"{self.name}"
+    class Meta:
+        verbose_name_plural = 'Category Type'
+        
+# Expense Categories
 class Category(models.Model):
     name = models.CharField(max_length=25)
+    type = models.ManyToManyField(Category_type)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     icon = models.CharField(max_length= 64, null=True, blank=True)
-    color = models.CharField(max_length= 64, null=True, blank=True)
     def __str__(self):
         return f"{self.name}"
     class Meta:
