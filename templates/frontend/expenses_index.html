@@ -96,7 +96,7 @@
 								<div class="widget-list-container">
 									<div class="widget-list-media icon ">
 										{% if category.icon %}
-										<i class="{{ category.icon }} {{ category.color}}"></i>
+										<i class="{{ category.icon }} {{ category.category_type.color}}"></i>
 										
 										{% else %}
 										<i class="ti-wallet bg-gradient-blue-dark"></i>
@@ -135,7 +135,7 @@
 					<li>
 						<div class="widget-list-container">
 							<div class="widget-list-media icon">
-								<i class="{{ expense.category.icon }} {{ expense.category.color}}"></i>
+								<i class="{{ expense.category.icon }} {{ expense.category.category_type.color}}"></i>
 							</div>
 							<div class="widget-list-content">
 								<h4 class="widget-title">{{ expense.category }} - {{ expense.currency}} {{ expense.amount|intcomma }}</h4>
