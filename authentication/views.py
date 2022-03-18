@@ -28,7 +28,7 @@ def login_view(request):
                 login(request, user)
                 return redirect( 'expenses' )
             else:    
-                msg = form    
+                msg = 'Authentication Failed'
         else:
             msg = 'Error validating the form'    
 
@@ -54,7 +54,7 @@ def register_user(request):
             return redirect("/expense/")
 
         else:
-            msg = 'Form is not valid'    
+            msg = form
     else:
         form = SignUpForm()
 
