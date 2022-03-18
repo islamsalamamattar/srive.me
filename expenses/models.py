@@ -19,7 +19,7 @@ class Category_type(models.Model):
 # Expense Categories
 class Category(models.Model):
     name = models.CharField(max_length=25)
-    type = models.ManyToManyField(Category_type)
+    category_type = models.ManyToManyField(Category_type, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     icon = models.CharField(max_length= 64, null=True, blank=True)
     def __str__(self):
