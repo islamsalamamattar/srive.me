@@ -59,12 +59,13 @@
 												<option selected disabled>select category</option>
 												{% for category_type in context.summary %}
 												<optgroup label = "{{ category_type }}">
-												{% for category in context.categories %}
-												{% if category.category_type == category_type %}
-												<option value="{{ category.id }}">{{ category }}</option>
-												{% endif %}
-												{% endfor %}
+													{% for category in context.categories %}
+													{% if category.category_type == category_type %}
+													<option value="{{ category.id }}">{{ category }}</option>
+													{% endif %}
+													{% endfor %}
 												</optgroup>
+												{% endfor %}
 											</select>
 										</div>											
 										<!-- END select category -->
