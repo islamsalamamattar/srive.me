@@ -40,7 +40,7 @@ def ExpenseIndex(request):
         context['categories'] = Category.objects.all()
         context['stores'] = Store.objects.all()
         context['cards'] = Payment.objects.all()
-        context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
+        #context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
         form = ExpenseForm()
         msg = None
         return render(request, 'frontend/expenses_index.html', {'context':context, 'form':form, 'segment': "Expenses", 'msg':msg})
