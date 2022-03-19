@@ -49,8 +49,18 @@ class Store(models.Model):
 class ExpenseManger(models.Manager):
     def last_ten(self, user):
         return self.filter(user=user).order_by('-pk')[:10:1]
+
     def Expense_summary(self, user):
-        return self.filter(user=user).values('category_category_type').annotate(total=Sum('amount'))
+        expenses_user = self.filter(user=user)
+        category_types = Category_type.objects.all()
+        summary = {}
+        for type in category_types:
+            total = 0
+            for expense in expenses_user:
+                if expense.category_type == type:
+                    total += expense.amount
+            summary['type'] = total
+
     def get_context(self, user):
         context={}
         context['history'] = self.last_ten(user)
