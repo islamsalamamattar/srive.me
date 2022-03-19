@@ -74,7 +74,7 @@
 									<!-- END select category -->
 									</div>
 									{% if msg %}
-									<p style="color: red">{{ msg }}</p>
+									<span class="text-danger">{{ msg | safe }}</span>
 									{% endif %}
 								</form>
 							</div>
