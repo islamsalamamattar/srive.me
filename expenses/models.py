@@ -59,7 +59,8 @@ class ExpenseManger(models.Manager):
             for expense in expenses_user:
                 if expense.category.category_type == type:
                     total += expense.amount
-            summary[type] = total
+            summary.append({'type': total})
+        return summary
 
     def get_context(self, user):
         context={}
