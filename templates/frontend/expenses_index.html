@@ -62,7 +62,7 @@
 												{% for category in context.categories %}
 												{% if category.category_type == category_type %}
 												<option value="{{ category.id }}">{{ category }}</option>
-												{% enif %}
+												{% endif %}
 												{% endfor %}
 												</optgroup>
 											</select>
