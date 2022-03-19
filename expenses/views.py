@@ -30,7 +30,7 @@ def ExpenseIndex(request):
             new_expense.save()
             return redirect( 'expenses' )
         else:
-            msg = form.error_class
+            msg = form.errors
             return render(request, 'frontend/expenses_index.html', { 'segment': "Expenses", 'msg':msg})
 
     else:
