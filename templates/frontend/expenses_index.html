@@ -89,7 +89,7 @@
 						<ul class="widget widget-list inverse-mode">
 							{{ context.summary }}
 
-							{% for category in context.summary %}
+							{% for key, value in context.summary.items %}
 							
 							<li>
 								
@@ -103,7 +103,7 @@
 										{% endif %}
 									</div>
 									<div class="widget-list-content">
-										<h4 class="widget-title">{{ category.name }} : EGP {{ category|intcomma }}</h4>
+										<h4 class="widget-title">{{ key }} : EGP {{ value|intcomma }}</h4>
 										<div class="widget-desc"></div>
 									</div>
 									<div class="widget-list-action">
