@@ -57,7 +57,7 @@ class ExpenseManger(models.Manager):
         for type in category_types:
             total = 0
             for expense in expenses_user:
-                if expense.category_type == type:
+                if expense.category.category_type == type:
                     total += expense.amount
             summary['type'] = total
 
