@@ -50,7 +50,7 @@ class ExpenseManger(models.Manager):
     def last_ten(self, user):
         return self.filter(user=user).order_by('-pk')[:10:1]
     def Expense_summary(self, user):
-        return self.filter(user=user).values('category.category_type').annotate(total=Sum('amount'))
+        return self.filter(user=user).values('category_category_type').annotate(total=Sum('amount'))
     def get_context(self, user):
         context={}
         context['history'] = self.last_ten(user)
