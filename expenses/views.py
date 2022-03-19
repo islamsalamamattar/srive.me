@@ -40,7 +40,7 @@ def ExpenseIndex(request):
         context['categories'] = Category.objects.all()
         context['stores'] = Store.objects.all()
         context['cards'] = Payment.objects.all()
-        context['summary'] = Expense.objects.filter(user=request.user).values('category_type').annotate(total = sum('amounts'))
+        context['summary'] = Expense.objects.filter(user=request.user).values('category_type').annotate(total = sum('amount'))
         context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
         form = ExpenseForm()
         msg = None
