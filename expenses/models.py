@@ -53,7 +53,7 @@ class ExpenseManger(models.Manager):
     def Expense_summary(self, user):
         expenses_user = self.filter(user=user)
         category_types = Category_type.objects.all()
-        summary = []
+        summary = {}
         for type in category_types:
             total = 0
             for expense in expenses_user:
