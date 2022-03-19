@@ -42,7 +42,6 @@
 										<!-- BEGIN select card -->		
 										<div class="form-group col-5">
 											<select class="form-control" name="payment">
-												<option selected disabled>select payment method</option>
 												{% for card in context.cards %}
 												<option value="{{ card.id }}">{{ card }}</option>
 												{% endfor %}
