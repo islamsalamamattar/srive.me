@@ -8,10 +8,11 @@ class ExpenseAdmin(ImportExportModelAdmin):
     search_fields = ["category", "date"]
 
 class CategoryAdmin(ImportExportModelAdmin):
-    list_display = ("name", )
-    search_fields = ["name",]
+    list_display = ("name", "category_type")
+    search_fields = ["category_type", "name"]
 
 # Register your models here.
+admin.site.register(Category_type)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Payment)
 admin.site.register(Store)

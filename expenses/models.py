@@ -15,7 +15,7 @@ class Category_type(models.Model):
         return f"{self.name}"
     class Meta:
         verbose_name_plural = 'Category Type'
-        
+
 # Expense Categories
 class Category(models.Model):
     name = models.CharField(max_length=25)
