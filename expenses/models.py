@@ -65,7 +65,7 @@ class ExpenseManger(models.Manager):
     def get_context(self, user):
         context={}
         context['history'] = self.last_ten(user)
-        context['summary'] = self.Expense_summary(user)
+        context['user_expenses'] = self.Expense_summary(user)
         return context
 
 # Expense object
@@ -76,6 +76,7 @@ class Expense(models.Model):
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
     card = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category_type = category.category_type
     store = models.ForeignKey(Store, null=True, blank=True, on_delete=models.CASCADE)
     payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.CASCADE)
     objects = ExpenseManger()
