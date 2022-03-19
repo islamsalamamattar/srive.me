@@ -36,9 +36,10 @@ def ExpenseIndex(request):
     else:
         context = Expense.objects.get_context(request.user)
         context['currencies'] = settings.CURRENCIES
-        context['categories'] = Category.objects.filter(user = request.user) | Category.objects.filter(user = 1)
-        context['stores'] = Store.objects.filter(user = request.user) | Store.objects.filter(user = 1)
-        context['cards'] = Payment.objects.filter(user = request.user)
+        context['category_types'] = Category_type.objects.all()
+        context['categories'] = Category.objects.all()
+        context['stores'] = Store.objects.all()
+        context['cards'] = Payment.objects.all()
         context['summary'] = {}
         for category in context['categories']:
             total = 0
