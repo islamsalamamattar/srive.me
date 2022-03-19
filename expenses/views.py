@@ -20,6 +20,14 @@ def ExpenseAnalytics(request):
 
 @login_required()
 def ExpenseIndex(request):
+    context = Expense.objects.get_context(request.user)
+    context['currencies'] = settings.CURRENCIES
+    context['category_types'] = Category_type.objects.all()
+    context['categories'] = Category.objects.all()
+    context['stores'] = Store.objects.all()
+    context['cards'] = Payment.objects.all()
+    context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
+    form = ExpenseForm()
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
 
@@ -31,17 +39,8 @@ def ExpenseIndex(request):
             return redirect( 'expenses' )
         else:
             msg = form.errors
-            return render(request, 'frontend/expenses_index.html', { 'segment': "Expenses", 'msg':msg})
+            return render(request, 'frontend/expenses_index.html', {'context':context, 'form':form, 'segment': "Expenses", 'msg':msg})
 
     else:
-        context = Expense.objects.get_context(request.user)
-        context['currencies'] = settings.CURRENCIES
-        context['category_types'] = Category_type.objects.all()
-        context['categories'] = Category.objects.all()
-        context['stores'] = Store.objects.all()
-        context['cards'] = Payment.objects.all()
-        #context['summary'] = Expense.objects.filter(user=request.user).values('category_type').annotate(total = sum('amount'))
-        context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
-        form = ExpenseForm()
         msg = None
         return render(request, 'frontend/expenses_index.html', {'context':context, 'form':form, 'segment': "Expenses", 'msg':msg})
