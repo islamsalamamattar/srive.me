@@ -95,5 +95,5 @@ class ExpenseForm(ModelForm):
     '''
     class Meta:
         model = Expense
-        fields = ('amount', 'currency', 'category', 'store', 'card', 'payment')
+        fields = ('amount', 'currency', 'category', 'store', 'deleted', 'payment')
 
