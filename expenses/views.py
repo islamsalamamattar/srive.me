@@ -40,14 +40,6 @@ def ExpenseIndex(request):
         context['categories'] = Category.objects.all()
         context['stores'] = Store.objects.all()
         context['cards'] = Payment.objects.all()
-        context['summary'] = {}
-        for category in context['categories']:
-            total = 0
-            for code in context['summary_list']:
-                if code['category'] == category.id:
-                    total = code['total']
-                    break
-            context['summary'][category] =  total
         context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
         form = ExpenseForm()
         msg = None
