@@ -11,6 +11,7 @@ from django.forms import ModelForm
 class Category_type(models.Model):
     name = models.CharField(max_length=25)
     color = models.CharField(max_length= 64, null=True, blank=True)
+    icon = models.CharField(max_length= 64, null=True, blank=True)
     def __str__(self):
         return f"{self.name}"
     class Meta:
@@ -74,7 +75,7 @@ class Expense(models.Model):
     date = models.DateField(auto_now=False, auto_now_add=True, )
     amount = models.PositiveIntegerField()
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
-    card = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     category_type = models.ForeignKey(Category_type, null=True, blank=True, on_delete=models.CASCADE)
     store = models.ForeignKey(Store, null=True, blank=True, on_delete=models.CASCADE)

@@ -74,7 +74,7 @@
 									<!-- END select category -->
 									</div>
 									{% if msg %}
-									<span class="text-danger">{{ msg | safe }}</span>
+									<span class="text-danger">{{ msg }}</span>
 									{% endif %}
 								</form>
 							</div>
@@ -96,12 +96,7 @@
 								
 								<div class="widget-list-container">
 									<div class="widget-list-media icon ">
-										{% if key.color %}
-										<i class="ti-wallet {{ key.color}}"></i>
-										
-										{% else %}
-										<i class="ti-wallet bg-gradient-blue-dark"></i>
-										{% endif %}
+										<i class="{{ key.icon}} {{ key.color}}"></i>
 									</div>
 									<div class="widget-list-content">
 										<h4 class="widget-title">{{ key }} : EGP {{ value|intcomma }}</h4>
