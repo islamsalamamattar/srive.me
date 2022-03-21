@@ -60,7 +60,7 @@ class ExpenseManger(models.Manager):
         current_month = datetime.now().month
         last_month = datetime.now().month - 1
         last_expenses = self.filter(user=user, date__month=last_month).values('category_type__name').annotate(total=Sum('amount')).order_by('-total')
-        month_expenses = self.filter(user=user, date__month=current_month).values('category_type__name' , 'icon').annotate(total=Sum('amount')).order_by('-total')
+        month_expenses = self.filter(user=user, date__month=current_month).values('category_type__name' , 'category_type__icon' ).annotate(total=Sum('amount')).order_by('-total')
         summary = month_expenses
         return summary
 
