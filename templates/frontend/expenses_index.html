@@ -91,9 +91,7 @@
 
 				<div class="row">
 					<!-- BEGIN Expenses Summary -->
-					<div class="col-12">
-
-						
+					<div class="col-6">						
 						<div class="widget-reminder-header bg-gradient-blue " style="color: white;">EXPENSES SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
 
@@ -107,6 +105,26 @@
 									</div>
 									<div class="widget-list-content">
 											<h4 class="widget-title">{{ category.category_type__name }} - EGP {{ category.total|intcomma }}</h4>
+									</div>
+								</div>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="col-6">						
+						<div class="widget-reminder-header bg-gradient-blue " style="color: white;">EXPENSES SUMMARY</div>			
+						<ul class="widget widget-list inverse-mode">
+
+							{% for method in context.payments %}
+							
+							<li>
+								
+								<div class="widget-list-container">
+									<div class="widget-list-media icon ">
+										<i class="{{ category.category_type__icon}} {{ category.category_type__color}}"></i>
+									</div>
+									<div class="widget-list-content">
+											<h4 class="widget-title">{{ method.payment__name }} - EGP {{ method.total|intcomma }}</h4>
 									</div>
 								</div>
 							</li>
