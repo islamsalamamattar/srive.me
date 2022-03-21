@@ -8,10 +8,9 @@
 
 		<!-- BEGIN row -->
 		<div class="row">
-			{{ context.payments_summary }}
+			
 			<!-- BEGIN col-6 -->
 			<div class="col-lg-6 col-sm-12">
-
 
 				<div class="row">
 					<div class="col-12">
@@ -76,7 +75,7 @@
 											<button type="submit" class="btn bg-gradient-blue col-12">
 												<div class=""><i class="ti-save"></i>&nbsp; Expense </div>
 											</button>											
-
+											{{ context.payments_summary }}
 										</div>									
 									<!-- END select category -->
 									</div>
@@ -144,7 +143,7 @@
 							</div>
 							<div class="widget-list-content">
 								<h4 class="widget-title">{{ expense.category }} - {{ expense.currency}} {{ expense.amount|intcomma }}</h4>
-								<div class="widget-desc">{{ expense.date }} - {{ expense.store }} </div>
+								<div class="widget-desc">{{ expense.date }} - {{ expense.payment }} </div>
 							</div>
 							<div class="widget-list-action">
 								<div class="dropdown dropdown-icon">

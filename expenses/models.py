@@ -87,7 +87,7 @@ class ExpenseManger(models.Manager):
         context={}
         context['history'] = self.last_ten(user)
         context['summary'] = self.categories_summary(user)
-        context['payments_summary'] = self.payments_summary(user)
+        context['paymentssummary'] = self.payments_summary(user)
         return context
 
 
