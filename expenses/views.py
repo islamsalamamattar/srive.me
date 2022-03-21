@@ -27,7 +27,6 @@ def ExpenseIndex(request):
     context['stores'] = Store.objects.all()
     context['cards'] = Payment.objects.all()
     context['payments'] = Expense.objects.values('payment__name').annotate(total=Sum('amount')).order_by('-total')
-    context['summary'] = {k: v for k, v in sorted(context['summary'].items(), key=lambda item: item[1], reverse=True)}
     form = ExpenseForm()
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
