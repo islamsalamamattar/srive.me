@@ -59,20 +59,9 @@ class ExpenseManger(models.Manager):
     def categories_summary(self, user):
         current_month = datetime.now().month
         last_month = datetime.now().month - 1
-        last_expenses = self.filter(user=user, date__month=last_month)
-        month_expenses = self.filter(user=user, date__month=current_month)
-        category_types = Category_type.objects.all()
-        summary = {}
-        for type in category_types:
-            month = datetime.now().month
-            last = datetime.now().month - 1
-            for expense in month_expenses:
-                if expense.category.category_type == type:
-                    month += expense.amount
-            for expense in last_expenses:
-                if expense.category.category_type == type:
-                    last += expense.amount
-            summary[type] = [month, last]
+        last_expenses = self.filter(user=user, date__month=last_month).values('category_type__name').annotate(total=Sum('amount')).order_by('-total')
+        month_expenses = self.filter(user=user, date__month=current_month).values('category_type__name').annotate(total=Sum('amount')).order_by('-total')
+        summary = month_expenses
         return summary
 
     def payments_summary(self, user):
