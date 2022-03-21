@@ -1,3 +1,4 @@
+from calendar import month
 from unicodedata import category
 from django.contrib.auth.models import User
 from django.db import models
@@ -51,23 +52,44 @@ class ExpenseManger(models.Manager):
     def last_ten(self, user):
         return self.filter(user=user).order_by('-pk')[:10:1]
 
-    def Expense_summary(self, user):
-        expenses_user = self.filter(user=user)
+    def user_expenses(self, user):
+        return self.filter(user=user).order_by('-pk')
+
+    def categories_summary(self, user):
+        current_month = datetime.now().month
+        last_month = datetime.now().month - timedelta(month=1)
+        last_expenses = self.filter(user=user, date__month=last_month)
+        month_expenses = self.filter(user=user, date__month=current_month)
         category_types = Category_type.objects.all()
         summary = {}
         for type in category_types:
-            total = 0
-            for expense in expenses_user:
+            month = datetime.now().month
+            last = datetime.now().month - timedelta(month=1)
+            for expense in month_expenses:
                 if expense.category.category_type == type:
-                    total += expense.amount
-            summary[type] = total
+                    month += expense.amount
+            for expense in last_expenses:
+                if expense.category.category_type == type:
+                    last += expense.amount
+            summary[type] = [month, last]
+        return summary
+
+    def payments_summary(self, user):
+        
+        current_month = datetime.now().month
+        last_month = datetime.now().month - timedelta(month=1)
+        month_expenses = self.filter(user=user, date__month=current_month)
+        last_expenses = self.filter(user=user, date__month=last_month)
+        summary = Payment.objects.filter(user=user, date__month=current_month).values('category_type').annotate(total=sum('amount'))
         return summary
 
     def get_context(self, user):
         context={}
         context['history'] = self.last_ten(user)
-        context['summary'] = self.Expense_summary(user)
+        context['summary'] = self.categories_summary(user)
+        context['payments_summary'] = self.payments_summary(user)
         return context
+
 
 # Expense object
 class Expense(models.Model):
