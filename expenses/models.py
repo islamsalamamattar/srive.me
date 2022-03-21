@@ -57,7 +57,7 @@ class ExpenseManger(models.Manager):
 
     def categories_summary(self, user):
         current_month = datetime.now().month
-        last_month = datetime.now().month - timedelta(month=1)
+        last_month = datetime.now().month - datetime.timedelta(month=1)
         last_expenses = self.filter(user=user, date__month=last_month)
         month_expenses = self.filter(user=user, date__month=current_month)
         category_types = Category_type.objects.all()
