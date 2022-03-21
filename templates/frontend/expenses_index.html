@@ -105,13 +105,15 @@
 									<div class="widget-list-media icon ">
 										<i class="{{ category.category_type__icon}} {{ category.category_type__color}}"></i>
 									</div>
-									<div class="widget-list-content">
-											<h4 class="widget-title">{{ category.category_type__name }}</h4>
+									<div class="row">
+										<div class="widget-list-content col-6">
+												<h4 class="widget-title">{{ category.category_type__name }}</h4>
+										</div>
+										<div class="widget-list-content col-6">
+											<h4 class="widget-title">EGP {{ category.total|intcomma }}</h4>
+										</div>
 									</div>
-									<div class="widget-list-content">
-										<h4 class="widget-title">EGP {{ category.total|intcomma }}</h4>
-									</div>
-									<div class="widget-list-action">EGP {{ category.total|intcomma }}</div>
+
 								</div>
 							</li>
 							{% endfor %}
