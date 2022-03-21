@@ -8,7 +8,6 @@ from django.conf import settings
 #from djmoney.models.fields import MoneyField
 from django.forms import ModelForm
 from django.utils.timezone import timedelta
-from dateutil.relativedelta import relativedelta
 
 # Expense Category types
 class Category_type(models.Model):
@@ -59,7 +58,7 @@ class ExpenseManger(models.Manager):
 
     def categories_summary(self, user):
         current_month = datetime.now().month
-        last_month = datetime.now().month - relativedelta(months=1)
+        last_month = datetime.now().month - timedelta(dayss=30)
         last_expenses = self.filter(user=user, date__month=last_month)
         month_expenses = self.filter(user=user, date__month=current_month)
         category_types = Category_type.objects.all()
