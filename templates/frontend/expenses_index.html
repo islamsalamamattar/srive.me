@@ -92,10 +92,12 @@
 
 				<div class="row">
 					<!-- BEGIN Expenses Summary -->
-					<div class="col-12">	
+					<div class="col-12">
+
+						{{ context.payments_summary }}
 						<div class="widget-reminder-header bg-gradient-blue " style="color: white;">EXPENSES SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
-							{{ context.payments_summary }}
+
 							{% for key, value in context.summary.items %}
 							
 							<li>
