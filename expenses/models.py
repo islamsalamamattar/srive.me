@@ -65,7 +65,7 @@ class ExpenseManger(models.Manager):
         summary = {}
         for type in category_types:
             month = datetime.now().month
-            last = datetime.now().month - timedelta(month=1)
+            last = datetime.now().month - 1
             for expense in month_expenses:
                 if expense.category.category_type == type:
                     month += expense.amount
