@@ -80,7 +80,7 @@ class ExpenseManger(models.Manager):
         last_month = datetime.now().month - timedelta(month=1)
         month_expenses = self.filter(user=user, date__month=current_month)
         last_expenses = self.filter(user=user, date__month=last_month)
-        summary = self.filter(user=user).values('category_type').annotate(total=Sum('amount'))
+        summary = self.filter(user=user).values('payment').annotate(total=Sum('amount'))
         return summary
 
     def get_context(self, user):
