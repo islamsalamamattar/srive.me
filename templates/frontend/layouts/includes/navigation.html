@@ -10,8 +10,8 @@
 							<b>Srive.me</b> {% for segment in segment %}	{{ segment }} {% endfor %}
 						</a>
 						<button type="button" class="navbar-toggle.inverse" data-click="sidebar-toggled">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
+							<i class="ti-view-list bg-theme"></i>
+							<span>&nbsp; MENU</span>
 						</button>
 					</div>
 					<!-- END mobile sidebar expand / collapse button -->
@@ -44,71 +44,16 @@
 								</li>
 								<li class="dropdown-header"><a href="#" class="dropdown-close">&times;</a>Yesterday</li>
 							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="javascript:;" data-toggle="dropdown" class="navbar-icon">
-								<i class="ti-settings"></i>
-							</a>
-							<ul class="dropdown-menu dropdown-md no-padding" data-dropdown-close="false">
-								<li class="dropdown-header">Notifications Settings</li>
-								<li class="setting">
-									<div class="setting-icon" style="background-color: #000"><i class="ti-email"></i></div>
-									<div class="setting-info">
-										<div class="switcher">
-											<input type="checkbox" name="setting_1" id="setting_1" checked />
-											<label for="setting_1"></label>
-										</div>
-										Email
-									</div>
-								</li>
-								<li class="setting">
-									<div class="setting-icon" style="background-color: #000"><i class="ti-desktop"></i></div>
-									<div class="setting-info">
-										<div class="switcher">
-											<input type="checkbox" name="setting_2" id="setting_2" checked />
-											<label for="setting_2"></label>
-										</div>
-										Desktop and Mobile
-									</div>
-								</li>
-								<li class="setting">
-									<div class="setting-icon" style="background-color: #000"><i class="ti-mobile"></i></div>
-									<div class="setting-info">
-										<div class="switcher">
-											<input type="checkbox" name="setting_3" id="setting_3" />
-											<label for="setting_3"></label>
-										</div>
-										Text message
-									</div>
-								</li>
-								<li class="dropdown-header">Privacy Settings</li>
-								<li class="setting">
-									<div class="setting-icon" style="background-color: #000"><i class="ti-user"></i></div>
-									<div class="setting-info">
-										<div class="switcher">
-											<input type="checkbox" name="setting_4" id="setting_4" />
-											<label for="setting_4"></label>
-										</div>
-										Public friends list 
-									</div>
-								</li>
-								<li class="setting">
-									<div class="setting-icon" style="background-color: #000"><i class="ti-search"></i></div>
-									<div class="setting-info">
-										<div class="switcher">
-											<input type="checkbox" name="setting_5" id="setting_5" checked />
-											<label for="setting_5"></label>
-										</div>
-										Public profile page
-									</div>
-								</li>
+							<ul class="dropdown-menu">
+								<li><a href="{% url 'admin:index' %}">settings</a></li>
+								<li class="divider"></li>
+								<li><a href="{% url 'logout' %}">Log Out</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
-							<button type="button" class="navbar-toggle.inverse" data-click="sidebar-toggled">
-								<i class="ti-view-list bg-theme"></i>
-								<span>&nbsp; MENU</span>
-							</button>
+							<a href="javascript:;" data-toggle="dropdown" class="navbar-icon">
+								<i class="ti-user"></i>
+							</a>
 							<ul class="dropdown-menu">
 								<li><a href="{% url 'admin:index' %}">settings</a></li>
 								<li class="divider"></li>
