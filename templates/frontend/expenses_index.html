@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="col-12">
 						<!-- BEGIN Add_expense -->
-						<div class="widget-reminder-header bg-gradient-blue" style="color: white;">ADD EXPENSE</div>
+						<div class="widget-reminder-header bg-theme" style="color: white;">ADD EXPENSE</div>
 						
 						<div class="panel panel-inverse">
 							<div class="panel-body inverse-mode">
@@ -100,7 +100,7 @@
 				<div class="row">
 					<!-- BEGIN Expenses Summary -->
 					<div class="col-7">						
-						<div class="widget-reminder-header bg-gradient-blue " style="color: white;">CATEGORIES SUMMARY</div>			
+						<div class="widget-reminder-header bg-theme " style="color: white;">CATEGORIES SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
 
 							{% for category in context.summary %}
@@ -120,7 +120,7 @@
 						</ul>
 					</div>
 					<div class="col-5">						
-						<div class="widget-reminder-header bg-gradient-blue " style="color: white;">PAYMENTS SUMMARY</div>			
+						<div class="widget-reminder-header bg-theme " style="color: white;">PAYMENTS SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
 
 							{% for method in context.payments %}
@@ -148,7 +148,7 @@
 
 			<!-- BEGIN Latest Expenses -->
 			<div class="col-lg-6 col-sm-12">	
-				<div class="widget-reminder-header bg-gradient-blue" style="color: white;">LATEST EXPENSES</div>			
+				<div class="widget-reminder-header bg-theme" style="color: white;">LATEST EXPENSES</div>			
 				<ul class="widget widget-list inverse-mode">
 					{% for expense in context.history %}
 					<li>
