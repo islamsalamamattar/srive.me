@@ -20,14 +20,14 @@ def ExpenseAnalytics(request):
 
 @login_required()
 def ExpenseIndex(request):
-    current_month = datetime.now().month
-    context = Expense.objects.get_context(request.user)
+    context = {}
+    context['summary'] = Expense.objects.categories_summary(request.user)
+    context['history'] = Expense.objects.last_ten(request.user)
     context['currencies'] = settings.CURRENCIES
     context['category_types'] = Category_type.objects.all()
     context['categories'] = Category.objects.all()
-    context['stores'] = Store.objects.all()
     context['cards'] = Payment.objects.all()
-    context['payments'] = Expense.objects.filter(user=request.user, date__month=current_month).values('payment__name').annotate(total=Sum('amount')).order_by('-total')
+    context['payments'] = Expense.objects.payments_summary(request.user)
     form = ExpenseForm()
     if request.method == 'POST':
         form = ExpenseForm(request.POST)

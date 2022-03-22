@@ -58,26 +58,25 @@ class ExpenseManger(models.Manager):
 
     def categories_summary(self, user):
         current_month = datetime.now().month
-        last_month = datetime.now().month - 1
-        last_expenses = self.filter(user=user, date__month=last_month).values('category_type__name').annotate(total=Sum('amount')).order_by('-total')
         month_expenses = self.filter(user=user, date__month=current_month).values('category_type__name' , 'category_type__icon', 'category_type__color').annotate(total=Sum('amount')).order_by('-total')
         summary = month_expenses
         return summary
 
-    def payments_summary(self, user):
-        
-        current_month = datetime.now().month
-        last_month = datetime.now().month - timedelta(month=1)
-        month_expenses = self.filter(user=user, date__month=current_month)
-        last_expenses = self.filter(user=user, date__month=last_month)
-        summary = self.values('payment').annotate(total=Sum('amount'))
+    def categories_summary_last(self, user):
+        last_month = datetime.now().month - 1
+        last_expenses = self.filter(user=user, date__month=last_month).values('category_type__name' , 'category_type__icon', 'category_type__color').annotate(total=Sum('amount')).order_by('-total')
+        summary = last_expenses
         return summary
 
-    def get_context(self, user):
-        context={}
-        context['history'] = self.last_ten(user)
-        context['summary'] = self.categories_summary(user)
-        return context
+    def payments_summary(self, user):       
+        current_month = datetime.now().month
+        summary = self.filter(user=user, date__month=current_month).values('payment__name').annotate(total=Sum('amount')).order_by('-total')
+        return summary
+
+    def payments_summary_last(self, user):
+        last_month = datetime.now().month - 1
+        summary = self.filter(user=user, date__month=last_month).values('payment__name').annotate(total=Sum('amount')).order_by('-total')
+        return summary
 
 
 # Expense object
