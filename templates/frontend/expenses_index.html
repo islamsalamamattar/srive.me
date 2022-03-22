@@ -30,7 +30,7 @@
 										<!-- END amount -->
 
 										<!-- BEGIN currency -->
-										<div class="form-group col-2">
+										<div class="form-group col-3">
 											<select class="form-control" name="currency">
 												{% for currency in context.currencies %}
 												<option value="{{ currency }}">{{ currency }}</option>
@@ -40,7 +40,7 @@
 										<!-- END currency -->
 
 										<!-- BEGIN select card -->		
-										<div class="form-group col-5">
+										<div class="form-group col-4">
 											<select class="form-control" name="payment">
 												{% for card in context.cards %}
 												<option value="{{ card.id }}">{{ card }}</option>
@@ -58,7 +58,7 @@
 										</div>
 									</div>
 									<!-- END note -->
-																		
+
 									<!-- BEGIN row -->
 									<div class="row">
 										<!-- BEGIN select category -->		
