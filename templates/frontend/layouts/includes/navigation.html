@@ -5,7 +5,7 @@
 			<div class="container-fluid">
 					<!-- BEGIN mobile sidebar expand / collapse button -->
 					<div class="navbar-header">
-						<a href="index.html" class="navbar-brand text-theme">
+						<a href="index.html" class="navbar-brand">
 							<i class="ti-panel navbar-logo text-gradient bg-theme"></i>
 							<b>Srive.me</b> {% for segment in segment %}	{{ segment }} {% endfor %}
 						</a>
@@ -108,7 +108,6 @@
 							<a href="javascript:;" data-toggle="dropdown">
 								<span class="navbar-user-img online pull-left">
 								</span>
-								<span class="hidden-xs text-theme">Account<b class="caret"></b></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="{% url 'admin:index' %}">settings</a></li>
