@@ -157,7 +157,7 @@
 								<i class="{{ expense.category.icon }} {{ expense.category.category_type.color}}"></i>
 							</div>
 							<div class="widget-list-content">
-								<h4 class="widget-title">{{ expense.category }} - {{ expense.currency}} {{ expense.amount|intcomma }}</h4>
+								<h4 class="widget-title">{% if expense.note %} {{ expesne.note}} {% else %}  {{ expense.category }} {% endif %} - {{ expense.currency}} {{ expense.amount|intcomma }}</h4>
 								<div class="widget-desc">{{ expense.date }} - {{ expense.payment }} </div>
 							</div>
 							<div class="widget-list-action">
