@@ -88,7 +88,7 @@ class Expense(models.Model):
     deleted = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     category_type = models.ForeignKey(Category_type, null=True, blank=True, on_delete=models.CASCADE)
-    store = models.ForeignKey(Store, null=True, blank=True, on_delete=models.CASCADE)
+    store = models.CharField(max_length=140, null=True, blank=True)
     payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.CASCADE)
     objects = ExpenseManger()
     def __str__(self):

@@ -15,6 +15,7 @@ def ExpenseAnalytics(request):
     context_object_name = 'expenses'
     context ={}
     context['segment'] = "Analytics"
+    context['history'] = Expense.objects.user_expenses(request.user)
     html_template = loader.get_template( 'frontend/expenses_analytics.html' )
     return HttpResponse(html_template.render(context, request))
 
