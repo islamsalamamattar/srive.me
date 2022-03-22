@@ -145,11 +145,11 @@
 
 			<!-- BEGIN Latest Expenses -->
 			<div class="col-lg-6 col-sm-12">	
-				<div class="widget-reminder-header bg-theme" style="color: white;">LATEST EXPENSES</div>			
+				<div class="widget-reminder-header bg-inverse" style="color: white;">LATEST EXPENSES</div>			
 				<ul class="widget widget-list inverse-mode">
 					{% for expense in context.history %}
 					<li>
-						<div class="widget-list-container">
+						<div class="widget-list-container bg-theme">
 							<div class="widget-list-media icon">
 								<i class="{{ expense.category.icon }} {{ expense.category.category_type.color}}"></i>
 							</div>
