@@ -100,7 +100,7 @@
 				<div class="row">
 					<!-- BEGIN Expenses Summary -->
 					<div class="col-7">						
-						<div class="widget-reminder-header bg-gradient-black " style="color: white;">CATEGORIES SUMMARY</div>			
+						<div class="widget-reminder-header bg-inverse " style="color: white;">CATEGORIES SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
 
 							{% for category in context.summary %}
@@ -120,14 +120,14 @@
 						</ul>
 					</div>
 					<div class="col-5">						
-						<div class="widget-reminder-header bg-theme " style="color: white;">PAYMENTS SUMMARY</div>			
+						<div class="widget-reminder-header bg-inverse " style="color: white;">PAYMENTS SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
 
 							{% for method in context.payments %}
 							
 							<li>
 								
-								<div class="widget-list-container">
+								<div class="widget-list-container bg-theme">
 									<div class="widget-list-content">
 											<h4 class="widget-title">{{ method.payment__name }} - EGP {{ method.total|intcomma }}</h4>
 									</div>
