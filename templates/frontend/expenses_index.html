@@ -15,10 +15,10 @@
 				<div class="row">
 					<div class="col-12">
 						<!-- BEGIN Add_expense -->
-						<div class="widget-reminder-header bg-theme" style="color: white;">ADD EXPENSE</div>
+						<div class="widget-reminder-header bg-inverse" style="color: white;">ADD EXPENSE</div>
 						
 						<div class="panel panel-inverse">
-							<div class="panel-body inverse-mode">
+							<div class="panel-body inverse-mode bg-theme">
 								<form action="{% url 'expenses' %}" method="POST" name="Add_expense">
 									{% csrf_token %}
 									<!-- BEGIN row -->
