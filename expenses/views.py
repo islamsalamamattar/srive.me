@@ -51,7 +51,7 @@ def ExpenseIndex(request):
 def DeleteExpense(request, expense_id):
     try:
         expense_edit = Expense.objects.get(user=request.user, id=expense_id)
-        expense_edit['deleted'] = True
+        expense_edit.deleted = True
         expense_edit.save()
         return redirect( 'expenses' )
     except ObjectDoesNotExist:
