@@ -10,6 +10,7 @@ from datetime import date
 from .models import *
 from .urls import *
 
+## expenses analytics view
 @login_required()
 def ExpenseAnalytics(request):
     context_object_name = 'expenses'
@@ -19,6 +20,7 @@ def ExpenseAnalytics(request):
     html_template = loader.get_template( 'frontend/expenses_analytics.html' )
     return HttpResponse(html_template.render(context, request))
 
+## expenses index view
 @login_required()
 def ExpenseIndex(request):
     context = {}
@@ -47,6 +49,7 @@ def ExpenseIndex(request):
         msg = None
         return render(request, 'frontend/expenses_index.html', {'context':context, 'msg':msg})
 
+## delete expense view
 @login_required()
 def DeleteExpense(request, expense_id):
     try:
@@ -56,3 +59,22 @@ def DeleteExpense(request, expense_id):
         return redirect( 'expenses' )
     except ObjectDoesNotExist:
         return redirect( 'expenses' )
+
+## edit expense veiw
+@login_required()
+def EditExpense(request, expense_id):
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST)
+        if form.is_valid():
+            new_expense = form.save()
+            return redirect( 'expenses' )
+        else:
+            msg = form.errors
+            return redirect( 'edit_expenses' )
+    else:
+        msg = None
+        try:
+            expense_edit = Expense.objects.get(user=request.user, id=expense_id)
+            return render(request, 'frontend/expenses_edit.html', {'expense':expense_edit, 'msg':msg})
+        except ObjectDoesNotExist:
+            return redirect( 'expenses' )
