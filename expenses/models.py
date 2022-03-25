@@ -51,31 +51,31 @@ class Store(models.Model):
 #Expense Object Manager
 class ExpenseManger(models.Manager):
     def last_ten(self, user):
-        return self.filter(user=user).order_by('-pk')[:10:1]
+        return self.filter(user=user, deleted=False).order_by('-pk')[:10:1]
 
     def user_expenses(self, user):
-        return self.filter(user=user).order_by('-pk')
+        return self.filter(user=user, deleted=False).order_by('-pk')
 
     def categories_summary(self, user):
         current_month = datetime.now().month
-        month_expenses = self.filter(user=user, date__month=current_month).values('category_type__name' , 'category_type__icon', 'category_type__color').annotate(total=Sum('amount')).order_by('-total')
+        month_expenses = self.filter(user=user, date__month=current_month, deleted=False).values('category_type__name' , 'category_type__icon', 'category_type__color').annotate(total=Sum('amount')).order_by('-total')
         summary = month_expenses
         return summary
 
     def categories_summary_last(self, user):
         last_month = datetime.now().month - 1
-        last_expenses = self.filter(user=user, date__month=last_month).values('category_type__name' , 'category_type__icon', 'category_type__color').annotate(total=Sum('amount')).order_by('-total')
+        last_expenses = self.filter(user=user, date__month=last_month, deleted=False).values('category_type__name' , 'category_type__icon', 'category_type__color').annotate(total=Sum('amount')).order_by('-total')
         summary = last_expenses
         return summary
 
     def payments_summary(self, user):       
         current_month = datetime.now().month
-        summary = self.filter(user=user, date__month=current_month).values('payment__name').annotate(total=Sum('amount')).order_by('-total')
+        summary = self.filter(user=user, date__month=current_month, deleted=False).values('payment__name').annotate(total=Sum('amount')).order_by('-total')
         return summary
 
     def payments_summary_last(self, user):
         last_month = datetime.now().month - 1
-        summary = self.filter(user=user, date__month=last_month).values('payment__name').annotate(total=Sum('amount')).order_by('-total')
+        summary = self.filter(user=user, date__month=last_month, deleted=False).values('payment__name').annotate(total=Sum('amount')).order_by('-total')
         return summary
 
 

@@ -12,11 +12,12 @@
 			<!-- BEGIN col-6 -->
 			<div class="col-lg-6 col-sm-12">
 
+
+				<!-- BEGIN Add_expense -->
 				<div class="row">
 					<div class="col-12">
-						<!-- BEGIN Add_expense -->
-						<div class="widget-reminder-header bg-inverse" style="color: white;">ADD EXPENSE</div>
 						
+						<div class="widget-reminder-header bg-inverse" style="color: white;">ADD EXPENSE</div>						
 						<div class="panel panel-inverse">
 							<div class="panel-body inverse-mode bg-theme">
 								<form action="{% url 'expenses' %}" method="POST" name="Add_expense">
@@ -95,11 +96,15 @@
 						</div>
 					</div>
 				</div>
+				<!-- END add_expenses -->
+
 
 				<div class="row"><div class="col-12"></div></div>
 
 				<div class="row">
-					<!-- BEGIN Expenses Summary -->
+
+
+					<!-- BEGIN Category Summary -->
 					<div class="col-12">						
 						<div class="widget-reminder-header bg-inverse " style="color: white;">CATEGORIES SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
@@ -120,6 +125,10 @@
 							{% endfor %}
 						</ul>
 					</div>
+					<!-- END category Summary -->
+
+
+					<!-- BEGIN Payment Summary -->
 					<div class="col-12">						
 						<div class="widget-reminder-header bg-inverse " style="color: white;">PAYMENTS SUMMARY</div>			
 						<ul class="widget widget-list inverse-mode">
@@ -140,7 +149,7 @@
 							{% endfor %}
 						</ul>
 					</div>
-					<!-- END Expenses Summary -->
+					<!-- END Payment Summary -->
 
 
 				</div>
@@ -165,9 +174,11 @@
 								<div class="dropdown dropdown-icon">
 									<a href="#" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
 									<ul class="dropdown-menu dropdown-menu-right">
-										<li><a href="#">View</a></li>
+										<li><a href="#">View/edit</a></li>
 										<li><a href="#">Analytics</a></li>
-										<li><a href="#">Report</a></li>
+										<li>
+											<a type="submit">Delete</a>
+										</li>	
 									</ul>
 								</div>
 							</div>

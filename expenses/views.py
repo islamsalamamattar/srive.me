@@ -3,8 +3,8 @@
 from django.contrib.auth.decorators import login_required
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
+from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from datetime import date
 from .models import *
@@ -29,21 +29,30 @@ def ExpenseIndex(request):
     context['categories'] = Category.objects.all()
     context['cards'] = Payment.objects.all()
     context['payments'] = Expense.objects.payments_summary(request.user)
-    form = ExpenseForm()
+    context['form'] = ExpenseForm()
+    context['segment'] = "Expenses"
     if request.method == 'POST':
         form = ExpenseForm(request.POST)
-
         if form.is_valid():
             new_expense = form.save(commit=False)
-            new_expense.user = request.user
-            new_expense.date = date.today()
-            new_expense.category_type = new_expense.category.category_type
+            new_expense['user'] = request.user
+            new_expense['date'] = date.today()
+            new_expense['category_type'] = new_expense.category.category_type
             new_expense.save()
             return redirect( 'expenses' )
         else:
             msg = form.errors
-            return render(request, 'frontend/expenses_index.html', {'context':context, 'form':form, 'segment': "Expenses", 'msg':msg})
-
+            return render(request, 'frontend/expenses_index.html', {'context':context, 'msg':msg})
     else:
         msg = None
-        return render(request, 'frontend/expenses_index.html', {'context':context, 'form':form, 'segment': "Expenses", 'msg':msg})
+        return render(request, 'frontend/expenses_index.html', {'context':context, 'msg':msg})
+
+@login_required()
+def DeleteExpense(request, expense_id):
+    try:
+        expense_edit = Expense.objects.get(user=request.user, id=expense_id)
+        expense_edit['deleted'] = True
+        expense_edit.save()
+        return redirect( 'expenses' )
+    except ObjectDoesNotExist:
+        return redirect( 'expenses' )
