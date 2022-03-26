@@ -4,7 +4,7 @@ from expenses import models
 from .serializer import ExpenseSerializer
 
 
-@api_view('GET')
+@api_view(['GET'])
 def ExpenseIndexApi(request):
     expenses = models.Expense.objects.all()
     serializer = ExpenseSerializer(expenses, many=True)
