@@ -147,7 +147,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static") , '/home/admin/srive.env/lib/python3.8/site-packages/django/contrib/admin/static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static") , '/home/admin/srive.env/lib/python3.8/site-packages/django/contrib/admin/static', '/home/admin/srive.env/lib/python3.8/site-packages/rest_framework/static']
 
 STATIC_ROOT = 'static_root/'
 
