@@ -6,6 +6,6 @@ from .serializer import ExpenseSerializer
 
 @api_view(['GET'])
 def ExpenseIndexApi(request):
-    expenses = models.Expense.objects.all()
+    expenses = models.Expense.objects.all().order_by('-date')
     serializer = ExpenseSerializer(expenses, many=True)
     return Response(serializer.data)
