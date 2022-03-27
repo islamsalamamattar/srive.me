@@ -17,7 +17,7 @@ from .serializer import ExpenseSerializer, LoginSerializer
 @api_view(['GET'])
 @login_required(login_url='api/login/')
 def ExpenseIndexApi(request):
-    expenses = exp.Expense.objects.all().order_by('-date', '-id')
+    expenses = exp.Expense.objects.filter(user=request.user).order_by('-date', '-id')
     serializer = ExpenseSerializer(expenses, many=True)
     return Response(serializer.data)
 
