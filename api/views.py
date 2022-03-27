@@ -8,7 +8,7 @@ from rest_framework import views
 from django.contrib.auth.decorators import login_required
 
 from expenses import models as exp
-from . import serializers
+from . import serializer
 from .serializer import ExpenseSerializer, LoginSerializer
 
 
@@ -27,7 +27,7 @@ class LoginView(views.APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
-        serializer = serializers.LoginSerializer(data=self.request.data,
+        serializer = serializer.LoginSerializer(data=self.request.data,
             context={ 'request': self.request })
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
