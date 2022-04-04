@@ -21,6 +21,8 @@ def ExpenseIndexApi(request):
     serializer = ExpenseSerializer(expenses, many=True)
     return Response(serializer.data)
 
+
+@api_view(['GET'])
 def ExpensesApi(request):
     expenses = exp.Expense.objects.all().order_by('-date', '-id')
     serializer = ExpenseSerializer(expenses, many=True)
