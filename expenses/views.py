@@ -1,6 +1,7 @@
     # -*- encoding: utf-8 -*-
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -37,7 +38,7 @@ def ExpenseIndex(request):
         form = ExpenseForm(request.POST)
         if form.is_valid():
             new_expense = form.save(commit=False)
-            new_expense['user'] = request.user
+            new_expense['user'] = request.user.id
             new_expense['date'] = date.today()
             new_expense['category_type'] = new_expense.category.category_type
             new_expense.save()
