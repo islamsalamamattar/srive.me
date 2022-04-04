@@ -21,6 +21,10 @@ def ExpenseIndexApi(request):
     serializer = ExpenseSerializer(expenses, many=True)
     return Response(serializer.data)
 
+def ExpensesApi(request):
+    expenses = exp.Expense.objects.all().order_by('-date', '-id')
+    serializer = ExpenseSerializer(expenses, many=True)
+    return Response(serializer.data)
 
 class LoginView(views.APIView):
     # This view should be accessible also for unauthenticated users.
