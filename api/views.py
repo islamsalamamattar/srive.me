@@ -18,7 +18,7 @@ from django.http import JsonResponse
 @login_required(login_url='api/login/')
 def ExpenseIndexApi(request):
     expenses = exp.Expense.objects.filter(user=request.user).order_by('-date', '-id')
-    serializer = ExpenseSerializer(expenses, many=True)
+    serializer = ExpenseSerializer(expenses, many="true")
     return Response(serializer.data)
 
 
@@ -34,7 +34,7 @@ def ExpensesApi(request):
         "note": "ggggg",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 29,
@@ -45,7 +45,7 @@ def ExpensesApi(request):
         "note": "qqqq",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 28,
@@ -56,7 +56,7 @@ def ExpensesApi(request):
         "note": "ddd",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 27,
@@ -67,7 +67,7 @@ def ExpensesApi(request):
         "note": "fuel",
         "payment": 1,
         "category_type": 4,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 26,
@@ -78,7 +78,7 @@ def ExpensesApi(request):
         "note": "2ahwa",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 25,
@@ -89,7 +89,7 @@ def ExpensesApi(request):
         "note": "40km service",
         "payment": 3,
         "category_type": 4,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 24,
@@ -100,7 +100,7 @@ def ExpensesApi(request):
         "note": "Fuel regil",
         "payment": 2,
         "category_type": 4,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 23,
@@ -111,7 +111,7 @@ def ExpensesApi(request):
         "note": "Gardening tools",
         "payment": 1,
         "category_type": 2,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 22,
@@ -122,7 +122,7 @@ def ExpensesApi(request):
         "note": "Kick boxing subscription for 2 months",
         "payment": 2,
         "category_type": 5,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 21,
@@ -130,10 +130,10 @@ def ExpensesApi(request):
         "amount": 724,
         "currency": "EGP",
         "category": 27,
-        "note": null,
+        "note": "null",
         "payment": 3,
         "category_type": 5,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 20,
@@ -141,10 +141,10 @@ def ExpensesApi(request):
         "amount": 990,
         "currency": "EGP",
         "category": 33,
-        "note": null,
+        "note": "null",
         "payment": 2,
         "category_type": 6,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 19,
@@ -152,10 +152,10 @@ def ExpensesApi(request):
         "amount": 43556,
         "currency": "EGP",
         "category": 32,
-        "note": null,
+        "note": "null",
         "payment": 4,
         "category_type": 6,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 18,
@@ -163,10 +163,10 @@ def ExpensesApi(request):
         "amount": 347,
         "currency": "EGP",
         "category": 5,
-        "note": null,
+        "note": "null",
         "payment": 3,
         "category_type": 2,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 17,
@@ -174,10 +174,10 @@ def ExpensesApi(request):
         "amount": 299,
         "currency": "EGP",
         "category": 1,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 2,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 16,
@@ -185,10 +185,10 @@ def ExpensesApi(request):
         "amount": 342,
         "currency": "EGP",
         "category": 20,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 4,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 15,
@@ -196,10 +196,10 @@ def ExpensesApi(request):
         "amount": 300,
         "currency": "EGP",
         "category": 12,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 2,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 14,
@@ -207,10 +207,10 @@ def ExpensesApi(request):
         "amount": 27500,
         "currency": "EGP",
         "category": 14,
-        "note": null,
+        "note": "null",
         "payment": 3,
         "category_type": 3,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 13,
@@ -221,7 +221,7 @@ def ExpensesApi(request):
         "note": "1",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 12,
@@ -229,10 +229,10 @@ def ExpensesApi(request):
         "amount": 5563,
         "currency": "EGP",
         "category": 29,
-        "note": null,
+        "note": "null",
         "payment": 3,
         "category_type": 5,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 11,
@@ -240,10 +240,10 @@ def ExpensesApi(request):
         "amount": 1234,
         "currency": "EGP",
         "category": 5,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 2,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 10,
@@ -251,10 +251,10 @@ def ExpensesApi(request):
         "amount": 150,
         "currency": "EGP",
         "category": 19,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 4,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 9,
@@ -262,10 +262,10 @@ def ExpensesApi(request):
         "amount": 450,
         "currency": "EGP",
         "category": 9,
-        "note": null,
+        "note": "null",
         "payment": 2,
         "category_type": 2,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 8,
@@ -273,10 +273,10 @@ def ExpensesApi(request):
         "amount": 3344,
         "currency": "EGP",
         "category": 8,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 2,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 7,
@@ -284,10 +284,10 @@ def ExpensesApi(request):
         "amount": 1222,
         "currency": "EGP",
         "category": 4,
-        "note": null,
+        "note": "null",
         "payment": 2,
         "category_type": 1,
-        "deleted": true
+        "deleted": "true"
     },
     {
         "id": 6,
@@ -295,10 +295,10 @@ def ExpensesApi(request):
         "amount": 124,
         "currency": "EGP",
         "category": 4,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 5,
@@ -306,10 +306,10 @@ def ExpensesApi(request):
         "amount": 133,
         "currency": "EGP",
         "category": 6,
-        "note": null,
+        "note": "null",
         "payment": 2,
         "category_type": 2,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 4,
@@ -317,10 +317,10 @@ def ExpensesApi(request):
         "amount": 4567,
         "currency": "EGP",
         "category": 2,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 3,
@@ -328,10 +328,10 @@ def ExpensesApi(request):
         "amount": 555,
         "currency": "EGP",
         "category": 3,
-        "note": null,
+        "note": "null",
         "payment": 2,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 2,
@@ -339,10 +339,10 @@ def ExpensesApi(request):
         "amount": 4455,
         "currency": "EGP",
         "category": 5,
-        "note": null,
+        "note": "null",
         "payment": 2,
         "category_type": 2,
-        "deleted": false
+        "deleted": "false"
     },
     {
         "id": 1,
@@ -350,13 +350,13 @@ def ExpensesApi(request):
         "amount": 1234,
         "currency": "EGP",
         "category": 3,
-        "note": null,
+        "note": "null",
         "payment": 1,
         "category_type": 1,
-        "deleted": false
+        "deleted": "false"
     }
 ]
-    return JsonResponse(expenses, safe=False)
+    return JsonResponse(expenses, safe="false")
 
 class LoginView(views.APIView):
     # This view should be accessible also for unauthenticated users.
