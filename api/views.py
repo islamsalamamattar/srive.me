@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 from expenses import models as exp
 from . import serializer
 from .serializer import ExpenseSerializer, LoginSerializer
-
+from django.http import JsonResponse
 
 
 
@@ -22,20 +22,18 @@ def ExpenseIndexApi(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
+# @api_view(['GET'])
 def ExpensesApi(request):
     expenses = exp.Expense.objects.all().order_by('-date', '-id')
     serializer = ExpenseSerializer(expenses, many=True)
-    return Response(serializer.data)
+    return JsonResponse(serializer.data)
 
 class LoginView(views.APIView):
     # This view should be accessible also for unauthenticated users.
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request, format=None):
-        serializer = serializer.LoginSerializer(data=self.request.data,
-            context={ 'request': self.request })
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        login(request, user)
+        data = [{
+            'date': '6-4-2022'
+        }]
         return Response(None, status=status.HTTP_202_ACCEPTED)
