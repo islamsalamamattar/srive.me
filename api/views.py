@@ -356,7 +356,7 @@ def ExpensesApi(request):
         "deleted": "false"
     }
 ]
-    return JsonResponse(expenses, safe="false")
+    return JsonResponse(expenses, safe=False)
 
 class LoginView(views.APIView):
     # This view should be accessible also for unauthenticated users.
