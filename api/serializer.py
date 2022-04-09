@@ -6,7 +6,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source= 'category.name')
     class Meta:
         model = models.Expense
-        fields = ['id', 'date', 'amount', 'currency_name', 'category', 'note', 'payment', 'category_type', 'deleted']
+        fields = ['id', 'date', 'amount', 'currency', 'category_name', 'note', 'payment', 'category_type', 'deleted']
 
 
 class LoginSerializer(serializers.Serializer):
