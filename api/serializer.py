@@ -4,9 +4,11 @@ from expenses import models
 
 class ExpenseSerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source= 'category.name')
+    category_type_name = serializers.CharField(source = 'category_type.name')
+    payment_name = serializers.CharField(source= 'payment.name')
     class Meta:
         model = models.Expense
-        fields = ['id', 'date', 'amount', 'currency', 'category_name', 'note', 'payment', 'category_type', 'deleted']
+        fields = ['id', 'date', 'amount', 'currency', 'category_name', 'note', 'payment_name', 'category_type_name', 'deleted']
 
 
 class LoginSerializer(serializers.Serializer):
