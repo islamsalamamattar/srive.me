@@ -8,7 +8,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
     payment_name = serializers.CharField(source= 'payment.name')
     class Meta:
         model = models.Expense
-        fields = ['id', 'date', 'amount', 'currency', 'category_name', 'note', 'payment_name', 'category_type_name', 'deleted']
+        fields = ['id', 'date', 'amount', 'currency', 'category_name', 'payment_name', 'category_type_name']
 
 
 class LoginSerializer(serializers.Serializer):
