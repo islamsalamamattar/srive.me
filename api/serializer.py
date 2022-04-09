@@ -3,9 +3,10 @@ from django.contrib.auth import authenticate
 from expenses import models
 
 class ExpenseSerializer(serializers.ModelSerializer):
+    category_name = serializers.CharFeild(source= 'category.name')
     class Meta:
         model = models.Expense
-        fields = ['id', 'date', 'amount', 'currency', 'category__name', 'note', 'payment__name', 'category_type__name', 'deleted']
+        fields = ['id', 'date', 'amount', 'currency_name', 'category', 'note', 'payment', 'category_type', 'deleted']
 
 
 class LoginSerializer(serializers.Serializer):
