@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'expenses',
     'api',
 
+    'corsheaders',
     'django.contrib.humanize',
     #'djmoney',
     'import_export',
@@ -61,6 +62,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'
