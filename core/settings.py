@@ -67,6 +67,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True  # this allows all domains
+
 ROOT_URLCONF = 'core.urls'
 LOGIN_REDIRECT_URL = "expenses"   # Route defined in app/urls.py
 LOGOUT_REDIRECT_URL = "expenses"  # Route defined in app/urls.py
