@@ -23,6 +23,7 @@ def ExpenseIndexApi(request):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def ExpensesApi(request):
     expenses = exp.Expense.objects.all()
     serializer = ExpenseSerializer(expenses, many=True)
