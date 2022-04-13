@@ -68,6 +68,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True  # this allows all domains
+CORS_ALLOW_HEADERS = [ "Accept", "Accept-Language", "Content-Language", "Content-Type" ]
 
 ROOT_URLCONF = 'core.urls'
 LOGIN_REDIRECT_URL = "expenses"   # Route defined in app/urls.py
