@@ -91,6 +91,8 @@ class Expense(models.Model):
     note = models.CharField(max_length=140, null=True, blank=True)
     payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.CASCADE)
     objects = ExpenseManger()
+    class Mets:
+        ordering = ['-date']
     def __str__(self):
         return f"{self.category} , {self.amount}"
 
