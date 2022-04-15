@@ -9,7 +9,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Expense
         fields = ['id', 'date', 'amount', 'currency', 'category_name', 'payment_name', 'category_type_name']
-        extra_kwargs = {'amount': {'max_digits': 9, 'localize': True}}
+        extra_kwargs = {'amount': {'localize': True}}
 
 
 class LoginSerializer(serializers.Serializer):
