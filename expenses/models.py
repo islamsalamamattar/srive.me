@@ -83,7 +83,7 @@ class ExpenseManger(models.Manager):
 class Expense(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now=False, auto_now_add=True, )
-    amount = models.PositiveIntegerField()
+    amount = models.PositiveIntegerField(localize=True)
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
     deleted = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
