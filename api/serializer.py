@@ -8,9 +8,13 @@ class ExpenseSerializer(serializers.ModelSerializer):
     payment_name = serializers.CharField(source= 'payment.name')
     class Meta:
         model = models.Expense
-        ordering = ['-amount']
         fields = ['id', 'date', 'amount', 'currency', 'category_name', 'payment_name', 'category_type_name']
 
+class ExpenseCatSerliazer(serializers.ModelSerializer):
+    category_name = serializers.CharField(source= 'category.name')
+    class Meta:
+        model = models.Expense.last_ten()
+        fields = ['id', 'date', 'amount', 'category_name']
 
 class LoginSerializer(serializers.Serializer):
     """
