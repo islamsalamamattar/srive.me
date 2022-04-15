@@ -8,6 +8,7 @@ class ExpenseSerializer(serializers.ModelSerializer):
     payment_name = serializers.CharField(source= 'payment.name')
     class Meta:
         model = models.Expense
+        ordering = ['-date']
         fields = ['id', 'date', 'amount', 'currency', 'category_name', 'payment_name', 'category_type_name']
 
 
