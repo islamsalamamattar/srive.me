@@ -6,10 +6,10 @@ class ExpenseSerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source= 'category.name')
     category_type_name = serializers.CharField(source = 'category_type.name')
     payment_name = serializers.CharField(source= 'payment.name')
+    amountformatted = serializers.DecimalField(max_digits=7, decimal_places=2, localize=True)
     class Meta:
         model = models.Expense
-        fields = ['id', 'date', 'amount', 'currency', 'category_name', 'payment_name', 'category_type_name']
-        extra_kwargs = {'amount': {'localize': True}}
+        fields = ['id', 'date', 'amountformatted', 'currency', 'category_name', 'payment_name', 'category_type_name']
 
 
 class LoginSerializer(serializers.Serializer):
