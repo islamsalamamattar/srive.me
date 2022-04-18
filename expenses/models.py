@@ -48,7 +48,7 @@ class Store(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-#Expense Object Manager
+# Expense Object Manager
 class ExpenseManger(models.Manager):
     def last_ten(self, user):
         return self.filter(user=user, deleted=False).order_by('-pk')[:10:1]
@@ -90,20 +90,24 @@ class Expense(models.Model):
     category_type = models.ForeignKey(Category_type, null=True, blank=True, on_delete=models.CASCADE)
     note = models.CharField(max_length=140, null=True, blank=True)
     payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.CASCADE)
+    type = models.CharField('Type', max_length=12, choices = [('S', 'Subsription'), ('I', 'Installment'), ('E', "Expense")], default='E')
     objects = ExpenseManger()
     def __str__(self):
         return f"{self.category} , {self.amount}"
 
 
 class ExpenseForm(ModelForm):
-    '''
-    def __init__(self, current_user, *args, **kwargs):
-        super(ExpenseForm, self).__init__(*args, **kwargs)
-        self.fields['category'].queryset = self.fields['category'].queryset.filter(user__in = [current_user, 1])
-        self.fields['store'].queryset = self.fields['store'].queryset.filter(user=current_user)
-        self.fields['payment'].queryset = self.fields['payment'].queryset.filter(user=current_user)
-    '''
     class Meta:
         model = Expense
         fields = ('amount', 'currency', 'category', 'note', 'deleted', 'payment')
+
+
+# Subscription and installments
+class Subscription(models.Model):
+    name = models.CharField(max_length=25)
+    category = models.ForeignKey(Category_type, on_delete=models.CASCADE)
+    type = models.CharField('subscription/installment', max_length=12, choices = [('S', 'Subsription'), ('I', 'Installment')])
+    frequency = models.CharField('Due', max_length=12, choices = [('1', 'Monthly'), ('3', 'Quarterly'), ('12', 'Yearly')])
+    next_due = models.DateField()
+    autopay = models.BooleanField(default=True)
 

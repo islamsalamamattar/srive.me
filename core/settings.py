@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
 ]
 
-USE_THOUSAND_SEPARATOR = True
 
 
 ## rest framework global settings
