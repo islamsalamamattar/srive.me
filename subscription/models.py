@@ -11,4 +11,9 @@ class Subsription(models.Model):
     frequency = models.CharField('Due', max_length=12, choices = [('1', 'Monthly'), ('3', 'Quarterly'), ('12', 'Yearly')])
     next_due = models.DateField()
     autopay = models.BooleanField(default=True)
+    amount = models.PositiveIntegerField()
+    currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
+    def __str__(self):
+        return f"{self.name} , {self.amount}"
+
 
