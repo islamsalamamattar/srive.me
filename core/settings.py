@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'expenses',
+    'subscription',
     'api',
 
     'corsheaders',
