@@ -104,6 +104,7 @@ class ExpenseForm(ModelForm):
 
 # Subscription and installments
 class Subscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=25)
     category = models.ForeignKey(Category_type, on_delete=models.CASCADE)
     type = models.CharField('subcription/installment', max_length=12, choices = [('S', 'Subsription'), ('I', 'Installment')])
