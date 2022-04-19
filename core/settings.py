@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from decouple import config
+#from decouple import config
 from rest_framework.permissions import IsAuthenticated
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
