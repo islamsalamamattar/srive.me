@@ -47,7 +47,7 @@ def ExpenseIndex(request):
             msg = form.errors
             return render(request, 'frontend/expenses_index.html', {'context':context, 'msg':msg})
     else:
-        Subscription.auto_pay(request.user)
+        Subscription.objects.auto_pay(request.user)
         msg = None
         return render(request, 'frontend/expenses_index.html', {'context':context, 'msg':msg})
 
