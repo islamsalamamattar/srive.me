@@ -119,7 +119,6 @@ class SubscriptionManager(models.Manager):
         for subscription in subscriptions:
             payment = Expense(
                 user=user,
-                date=subscription.next_due,
                 amount=subscription.amount,
                 currency=subscription.currency,
                 category=subscription.category,
@@ -128,6 +127,8 @@ class SubscriptionManager(models.Manager):
                 payment=subscription.payment,
                 type=subscription.type,
                 )
+            payment.save(commit=False)
+            payment.date=subscription.next_due
             payment.save()
             subscription.next_due += timedelta(days=30*int(subscription.frequency))
             subscription.save()
