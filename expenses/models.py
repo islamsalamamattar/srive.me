@@ -115,7 +115,7 @@ class SubscriptionManager(models.Manager):
         return subscriptions
     ## auto paying >> creating expense for due subscription set to autopay
     def auto_pay(self, user):
-        subscriptions = self.filter(user=user, autopay=True, date__lte=datetime.date.today())
+        subscriptions = self.filter(user=user, autopay=True, date__lte=datetime.today())
         for subscription in subscriptions:
             payment = Expense(
                 user=user,
