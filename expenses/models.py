@@ -129,7 +129,7 @@ class SubscriptionManager(models.Manager):
                 type=subscription.type,
                 )
             payment.save()
-            subscription.next_due += timedelta(month=int(subscription.frequency))
+            subscription.next_due += timedelta(days=30*int(subscription.frequency))
             subscription.save()
 
 # Subscription and installments            
