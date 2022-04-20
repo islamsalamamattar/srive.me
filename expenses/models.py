@@ -124,7 +124,7 @@ class SubscriptionManager(models.Manager):
                 currency=subscription.currency,
                 category=subscription.category,
                 category_type=subscription.category.category_type,
-                note=subscription.name+subscription.frequency+' subscription',
+                note=subscription.note+subscription.frequency+' subscription',
                 payment=subscription.payment,
                 type=subscription.type,
                 )
