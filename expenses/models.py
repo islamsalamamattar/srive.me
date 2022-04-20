@@ -128,9 +128,9 @@ class SubscriptionManager(models.Manager):
                 payment=subscription.payment,
                 type=subscription.type,
                 )
-            newexpense = payment.save()
-            newexpense.date=subscription.next_due
-            newexpense.save()
+            payment.save()
+            payment.date=subscription.next_due
+            payment.save()
             subscription.next_due += relativedelta(months=int(subscription.frequency))
             subscription.save()
 
