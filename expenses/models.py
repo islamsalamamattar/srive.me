@@ -8,6 +8,7 @@ from django.conf import settings
 #from djmoney.models.fields import MoneyField
 from django.forms import ModelForm
 from django.utils.timezone import timedelta
+from dateutil.relativedelta import relativedelta
 
 # Expense Category types
 class Category_type(models.Model):
@@ -127,10 +128,10 @@ class SubscriptionManager(models.Manager):
                 payment=subscription.payment,
                 type=subscription.type,
                 )
-            payment.save(commit=False)
-            payment.date=subscription.next_due
-            payment.save()
-            subscription.next_due += timedelta(days=30*int(subscription.frequency))
+            newexpense = payment.save(commit=False)
+            newexpense.date=subscription.next_due
+            newexpense.save()
+            subscription.next_due += relativedelta(months=int(subscription.frequency))
             subscription.save()
 
 # Subscription and installments            
