@@ -163,7 +163,7 @@ class Budget(models.Model):
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
-    frequency = models.CharField('Due', max_length=12, choices = [('1', 'Daily'), ('7', 'Weekly'), ('30', 'Monthly')])
+    frequency = models.CharField('Due', max_length=12, choices = [('Daily', 'Daily'), ('Weekly', 'Weekly'), ('Monthly', 'Monthly')])
 
     deleted = models.BooleanField(default=False)
     def __str__(self):
