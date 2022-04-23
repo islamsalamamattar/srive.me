@@ -142,7 +142,6 @@ class Subscription(models.Model):
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
     deleted = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    category_type = models.ForeignKey(Category_type, null=True, blank=True, on_delete=models.CASCADE)
     note = models.CharField(max_length=140, null=True, blank=True)
     payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.CASCADE)
     type = models.CharField('Type', max_length=12, choices = [('S', 'Subsription'), ('I', 'Installment')], default='S')
