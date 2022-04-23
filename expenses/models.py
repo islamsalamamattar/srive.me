@@ -1,4 +1,5 @@
 from calendar import month
+from locale import currency
 from unicodedata import category
 from django.contrib.auth.models import User
 from django.db import models
@@ -140,7 +141,6 @@ class Subscription(models.Model):
     date = models.DateField(auto_now=False, auto_now_add=True, )
     amount = models.PositiveIntegerField()
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
-    deleted = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     note = models.CharField(max_length=140, null=True, blank=True)
     payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.CASCADE)
@@ -150,7 +150,21 @@ class Subscription(models.Model):
     next_due = models.DateField()
     autopay = models.BooleanField(default=True)
 
+    deleted = models.BooleanField(default=False)
+
     objects = SubscriptionManager()
     def __str__(self):
         return f"{self.note} , {self.amount}"
 
+# Budgets
+class Budget(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    global_budget = models.BooleanField(default=False)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
+    amount = models.PositiveIntegerField()
+    currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
+    frequency = models.CharField('Due', max_length=12, choices = [('1', 'Daily'), ('7', 'Weekly'), ('30', 'Monthly')])
+
+    deleted = models.BooleanField(default=False)
+    def __str__(self):
+        return f"{self.category} -  {self.frequency}  : {self.amount}"
