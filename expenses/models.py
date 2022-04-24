@@ -167,4 +167,4 @@ class Budget(models.Model):
 
     deleted = models.BooleanField(default=False)
     def __str__(self):
-        return f"{self.category} -  {self.frequency}  : {self.amount}"
+        return f"{self.category_type} -  {self.frequency}  : {self.amount}"
