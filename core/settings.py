@@ -32,12 +32,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'expenses',
-    'subscription',
+    'todo',
     'api',
 
     'corsheaders',
     'django.contrib.humanize',
-    #'djmoney',
     'import_export',
     'rest_framework',
 

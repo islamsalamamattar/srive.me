@@ -1,14 +1,8 @@
-from calendar import month
-from locale import currency
-from unicodedata import category
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import Sum
 from datetime import *
-from django.conf import settings
-#from djmoney.models.fields import MoneyField
 from django.forms import ModelForm
-from django.utils.timezone import timedelta
 from dateutil.relativedelta import relativedelta
 
 # Expense Category types
