@@ -19,7 +19,7 @@ class Category_type(models.Model):
     def __str__(self):
         return f"{self.name}"
     class Meta:
-        verbose_name_plural = 'Category Type'
+        verbose_name_plural = 'Category Types'
 
 
 # Expense Categories
@@ -160,7 +160,7 @@ class Subscription(models.Model):
 class Budget(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     global_budget = models.BooleanField(default=False)
-    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.CASCADE)
+    category_type = models.ForeignKey(Category_type, null=True, blank=True, on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
     frequency = models.CharField('Due', max_length=12, choices = [('Daily', 'Daily'), ('Weekly', 'Weekly'), ('Monthly', 'Monthly')])
