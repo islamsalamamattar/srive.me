@@ -1,0 +1,12 @@
+djangorestframework
+markdown
+django-filter
+python-dateutil
+django-cors-headers
+django-import-export
+django-money
+psycopg2
+django-storages
+boto3
+python-decouple
+

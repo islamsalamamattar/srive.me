@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 
     'expenses',
     'todo',
+    'shopping',
     'api',
 
     'corsheaders',
