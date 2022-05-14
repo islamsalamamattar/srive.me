@@ -1,6 +1,0 @@
-Django==4.0.3
-protobuf==3.19.4
-python-decouple==3.6
-webapp2==2.5.2
-django-import-export
-django-money
