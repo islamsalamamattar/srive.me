@@ -1,0 +1,58 @@
+{% extends 'frontend/layouts/base.html' %}	
+
+{% block title %} To Do {% endblock title %}
+{% load humanize %}
+{% load static %}
+{% block content %}
+	<!-- BEGIN #content -->
+
+		<!-- BEGIN row -->
+		<div class="row">
+			
+			<!-- BEGIN col-6 -->
+			<div class="col-lg-6 col-sm-12">
+
+
+				<!-- BEGIN Add_expense -->
+				<div class="row">
+					<div class="col-12">
+						{{ not_completed }}
+					</div>
+				</div>
+				<!-- END add_expenses -->
+			</div>
+
+						
+			<!-- BEGIN col-6 -->
+			<div class="col-lg-6 col-sm-12">
+
+
+				<!-- BEGIN Add_expense -->
+				<div class="row">
+					<div class="col-12">
+						{{ all_todos }}
+					</div>
+				</div>
+				<!-- END add_expenses -->
+			</div>
+
+		</div>
+
+	<!-- END #content -->
+{% endblock content %}
+
+{% block javascripts %}
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{% static 'assets/plugins/form/bootstrap-wizard/js/bootstrap-wizard.min.js' %}"></script>
+	<script src="{% static 'assets/js/page/form-wizards.demo.min.js' %}"></script>
+	<script src="{% static 'assets/js/apps.min.js' %}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+			FormWizards.init();
+		});
+	</script>
+
+{% endblock javascripts %}
