@@ -30,7 +30,7 @@ class TodoManager(models.Manager):
 class Todo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_added = models.DateField(auto_now=False, auto_now_add=True, )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='todo_category')
     task = models.CharField(max_length=140)
     completed = models.BooleanField(default=False)
     date_updated = models.DateField(auto_now=True)

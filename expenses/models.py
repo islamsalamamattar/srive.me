@@ -87,7 +87,7 @@ class Expense(models.Model):
     amount = models.PositiveIntegerField()
     currency = models.CharField('Currency', max_length=3, choices = [('EGP', 'EGP'), ('USD', 'USD'), ('EUR', 'EUR'), ('AED', 'AED')])
     deleted = models.BooleanField(default=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='todo_category')
     category_type = models.ForeignKey(Category_type, null=True, blank=True, on_delete=models.CASCADE)
     note = models.CharField(max_length=140, null=True, blank=True)
     payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.CASCADE)
