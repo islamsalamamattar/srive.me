@@ -1,5 +1,5 @@
 from django.urls import path
-from expenses import views
+from todo import views
 from django.shortcuts import redirect
 
 
