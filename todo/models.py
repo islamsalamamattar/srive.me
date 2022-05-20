@@ -19,9 +19,10 @@ class TodoManager(models.Manager):
         list = self.filter(user=user, completed=False).order_by('-category', '-date_added')
         not_completed = {}
         for todo in list:
-            if not not_completed[todo.category]:
-                not_completed[todo.category] = []
-            not_completed[todo.category].append(todo)
+            if todo.category.name in not_completed:
+                not_completed[todo.category].append(todo)
+            else:
+                not_completed[todo.category] = [todo]
         return not_completed
     def all_todos(self, user):
         return self.filter(user=user)
