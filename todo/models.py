@@ -36,4 +36,4 @@ class Todo(models.Model):
     date_updated = models.DateField(auto_now=True)
     objects = TodoManager()
     def __str__(self):
-        return f"{self.category} , {self.item}"
+        return f"{self.category} , {self.task}"
