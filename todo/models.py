@@ -4,7 +4,7 @@ from django.db.models import Q
 
 # Todo Categories
 class Category(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='todo_category_user')
     name = models.CharField(max_length=25)
     color = models.CharField(max_length= 64, null=True, blank=True)
     icon = models.CharField(max_length= 64, null=True, blank=True)
@@ -16,7 +16,7 @@ class Category(models.Model):
 # Todo
 class TodoManager(models.Manager):
     def not_completed(self, user):
-        list = self.filter(user=user, completed=False).order_by('-category', '-added_date')
+        list = self.filter(user=user, completed=False).order_by('-category', '-date_added')
         not_completed = {}
         for todo in list:
             if not not_completed[todo.category]:
