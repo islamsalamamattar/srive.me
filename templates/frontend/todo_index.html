@@ -13,7 +13,7 @@
 			{% for category, todos in not_completed.items %}
 			<div class="col-12">									
 				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category }}</div>			
-				{% for todo in todos}
+				{% for todo in todos %}
 				<ul class="widget widget-list inverse-mode">
 					<li>
 						<div class="widget-list-container bg-theme">
@@ -26,7 +26,7 @@
 						</div>
 					</li>
 				</ul>
-				
+				{% endfor %}
 				
 			</div>
 			{% endfor %}
