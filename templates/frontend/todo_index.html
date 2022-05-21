@@ -7,20 +7,29 @@
 	<!-- BEGIN #content -->
 
 		<!-- BEGIN row -->
-		<div class="row">
-			
-			<!-- BEGIN col-6 -->
-			<div class="col-lg-6 col-sm-12">
+		<div class="row">		
 
-
-				<!-- BEGIN Add_expense -->
-				<div class="row">
-					<div class="col-12">
-						{{ not_completed }}
-					</div>
-				</div>
-				<!-- END add_expenses -->
+			<!-- BEGIN Payment Summary -->
+			{% for category in context.not_completed %}
+			<div class="col-12">					
+				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category.name }}</div>			
+				{% for todo in category %}
+				<ul class="widget widget-list inverse-mode">
+					<li>
+						<div class="widget-list-container bg-theme">
+							<div class="widget-list-media icon ">
+								<i class="ti-credit-card bg-theme"></i>
+							</div>
+							<div class="widget-list-content">
+									<h4 class="widget-title">{{ todo.task }} -  {{ todo.date_added }}</h4>
+							</div>
+						</div>
+					</li>
+				</ul>
+				{% endfor %}
 			</div>
+			{% endfor %}
+			<!-- END Payment Summary -->
 
 						
 			<!-- BEGIN col-6 -->
