@@ -12,7 +12,7 @@
 			<!-- BEGIN Payment Summary -->
 			{% for todo in not_completed.items %}
 			<div class="col-12">					
-				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ todo.category }}</div>			
+				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ todo }}</div>			
 				
 				<ul class="widget widget-list inverse-mode">
 					<li>
@@ -21,7 +21,7 @@
 								<i class="ti-credit-card bg-theme"></i>
 							</div>
 							<div class="widget-list-content">
-									<h4 class="widget-title">{{ todo.value }}</h4>
+									<h4 class="widget-title">{{ todo[0] }}</h4>
 							</div>
 						</div>
 					</li>
