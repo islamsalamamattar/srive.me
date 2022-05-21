@@ -8,7 +8,7 @@
 
 		<!-- BEGIN row -->
 		<div class="row">		
-			{{ not_completed }}
+			
 			<!-- BEGIN Payment Summary -->
 			{% for category, todos in not_completed.items %}
 			<div class="col-12">									
@@ -22,7 +22,7 @@
 								<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
 							</div>
 							<div class="widget-list-content">
-									<h4 class="widget-title">{{ todo.task }}</h4>
+									<h4 class="widget-title">Added: {{ todo.date_added }} - {{ todo.task }}</h4>
 							</div>
 						</div>
 					</li>
