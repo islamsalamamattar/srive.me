@@ -13,7 +13,7 @@
 			{% for category in not_completed %}
 			<div class="col-12">					
 				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category.name }}</div>			
-				{% for todo in category.items  %}
+				
 				<ul class="widget widget-list inverse-mode">
 					<li>
 						<div class="widget-list-container bg-theme">
@@ -21,12 +21,12 @@
 								<i class="ti-credit-card bg-theme"></i>
 							</div>
 							<div class="widget-list-content">
-									<h4 class="widget-title">{{ todo }}</h4>
+									<h4 class="widget-title">{{ categoru.items }}</h4>
 							</div>
 						</div>
 					</li>
 				</ul>
-				{% endfor %}
+				
 			</div>
 			{% endfor %}
 			<!-- END Payment Summary -->
