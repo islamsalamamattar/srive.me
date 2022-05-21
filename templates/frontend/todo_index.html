@@ -10,7 +10,7 @@
 		<div class="row">		
 
 			<!-- BEGIN Payment Summary -->
-			{% for category in context.not_completed %}
+			{% for category in not_completed %}
 			<div class="col-12">					
 				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category.name }}</div>			
 				{% for todo in category %}
