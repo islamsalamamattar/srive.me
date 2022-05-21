@@ -16,14 +16,12 @@ class Category(models.Model):
 # Todo
 class TodoManager(models.Manager):
     def not_completed(self, user):
-        list = self.filter(user=user, completed=False).order_by('-category', '-date_added')
+        categories = Category.objects.filter(Q(user=user) | Q (user__id=1))
         not_completed = {}
-        for todo in list:
-            if todo.category in not_completed:
-                not_completed[todo.category].append(todo)
-            else:
-                not_completed[todo.category] = [todo]
+        for category in categories:
+            not_completed[category] = self.filter(user=user, completed=False, category=category).order_by('-date_added')
         return not_completed
+
     def all_todos(self, user):
         return self.filter(user=user)
 
