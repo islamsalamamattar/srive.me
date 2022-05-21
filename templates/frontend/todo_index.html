@@ -11,8 +11,9 @@
 			{{ not_completed }}
 			<!-- BEGIN Payment Summary -->
 			{% for todo in not_completed.items %}
-			<div class="col-12">					
-				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ todo.category }}</div>			
+			<div class="col-12">
+				{% for category in todo %}					
+				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category }}</div>			
 				
 				<ul class="widget widget-list inverse-mode">
 					<li>
@@ -26,6 +27,7 @@
 						</div>
 					</li>
 				</ul>
+				{% endfor %}
 				
 			</div>
 			{% endfor %}
