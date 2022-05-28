@@ -43,14 +43,11 @@
 			</div>
 			<div class="col-6 col-m-12">
 				<!-- BEGIN all todos -->
-				{{ all_todos }}
-				{{ not_completed }}
-				{% for category, todos in all_todos.items %}
 				<div class="col-12">									
-					<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category }}</div>			
+					<div class="widget-reminder-header bg-inverse " style="color: white;"> All Todos</div>			
 					
 					<ul class="widget widget-list inverse-mode">
-						{% for todo in todos %}
+						{% for todo in all_todos %}
 						<li>
 							<div class="widget-list-container bg-theme">
 								<div class="widget-list-media icon ">
