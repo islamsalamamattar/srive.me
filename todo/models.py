@@ -23,7 +23,8 @@ class TodoManager(models.Manager):
         return not_completed
 
     def all_todos(self, user):
-        return self.filter(user=user)
+        all_todos = self.filter(user=user)
+        return all_todos
 
 
 class Todo(models.Model):
