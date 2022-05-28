@@ -22,7 +22,14 @@
 								<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
 							</div>
 							<div class="widget-list-content">
-									<h4 class="widget-title">Added: {{ todo.date_added }} - {{ todo.task }}</h4>
+									<h4 class="widget-title">{{ todo.task }}</h4>
+							</div>
+							<div class="widget-desc hidden-xs">Added: {{ todo.date_added }} - </div>
+							<div class="widget-list-action">
+								<div class="switcher switcher-success pull-left">
+									<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
+									<label for="backup_checkbox"></label>
+								</div>
 							</div>
 						</div>
 					</li>
