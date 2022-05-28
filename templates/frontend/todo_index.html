@@ -43,6 +43,7 @@
 			</div>
 			<div class="col-6 col-m-12">
 				<!-- BEGIN all todos -->
+				{{ all_todos }}
 				{% for category, todos in all_todos.items %}
 				<div class="col-12">									
 					<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category }}</div>			
