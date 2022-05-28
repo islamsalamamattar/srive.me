@@ -8,40 +8,72 @@
 
 		<!-- BEGIN row -->
 		<div class="row">		
-			
-			<!-- BEGIN Payment Summary -->
-			{% for category, todos in not_completed.items %}
-			<div class="col-12">									
-				<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category }}</div>			
-				
-				<ul class="widget widget-list inverse-mode">
-					{% for todo in todos %}
-					<li>
-						<div class="widget-list-container bg-theme">
-							<div class="widget-list-media icon ">
-								<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
-							</div>
-							<div class="widget-list-content">
-								<h4 class="widget-title">{{ todo.task }}</h4>
+			<div class="col-6 col-m-12">
+				<!-- BEGIN not completed -->
+				{% for category, todos in not_completed.items %}
+				<div class="col-12">									
+					<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category }} - not completed</div>			
+					
+					<ul class="widget widget-list inverse-mode">
+						{% for todo in todos %}
+						<li>
+							<div class="widget-list-container bg-theme">
+								<div class="widget-list-media icon ">
+									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
+								</div>
+								<div class="widget-list-content">
+									<h4 class="widget-title">{{ todo.task }}</h4>
 
-								<div class="widget-desc hidden-xs">Added: {{ todo.date_added }} - </div>
-							</div>
-							<div class="widget-list-action">
-								<div class="switcher switcher-success pull-left">
-									<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
-									<label for="backup_checkbox"></label>
+									<div class="widget-desc hidden-xs">{{ todo.date_added }}</div>
+								</div>
+								<div class="widget-list-action">
+									<div class="switcher switcher-success pull-left">
+										<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
+										<label for="backup_checkbox"></label>
+									</div>
 								</div>
 							</div>
-						</div>
-					</li>
-					{% endfor %}
-				</ul>
-						
+						</li>
+						{% endfor %}
+					</ul>
+							
+				</div>
+				{% endfor %}
+				<!-- END not completed -->
 			</div>
-			{% endfor %}
-			<!-- END Payment Summary -->
+			<div class="col-6 col-m-12">
+				<!-- BEGIN all todos -->
+				{% for category, todos in not_completed.items %}
+				<div class="col-12">									
+					<div class="widget-reminder-header bg-inverse " style="color: white;">{{ category }}</div>			
+					
+					<ul class="widget widget-list inverse-mode">
+						{% for todo in todos %}
+						<li>
+							<div class="widget-list-container bg-theme">
+								<div class="widget-list-media icon ">
+									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
+								</div>
+								<div class="widget-list-content">
+									<h4 class="widget-title">{{ todo.task }}</h4>
 
-
+									<div class="widget-desc hidden-xs">{{ todo.date_added }}</div>
+								</div>
+								<div class="widget-list-action">
+									<div class="switcher switcher-success pull-left">
+										<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
+										<label for="backup_checkbox"></label>
+									</div>
+								</div>
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
+							
+				</div>
+				{% endfor %}
+				<!-- END all todos -->
+			</div>
 		</div>
 
 	<!-- END #content -->
