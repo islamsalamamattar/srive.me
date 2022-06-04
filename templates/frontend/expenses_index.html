@@ -168,7 +168,7 @@
 							</div>
 							<div class="widget-list-content">
 								<h4 class="widget-title">{% if expense.note %} {{ expense.note}} {% else %}  {{ expense.category }} {% endif %} - {{ expense.currency}} {{ expense.amount|intcomma }}</h4>
-								<div class="widget-desc">{{ expense.date }} - {{ expense.payment }} - {{ expense.id }} </div>
+								<div class="widget-desc">{{ expense.date }} - {{ expense.payment }} - {{ expense.id }}</div>
 							</div>
 							<div class="widget-list-action">
 								<div class="dropdown dropdown-icon">
@@ -177,7 +177,10 @@
 										<li><a href="#">View/edit</a></li>
 										<li><a href="#">Analytics</a></li>
 										<li>
-											<a href="{% url 'delete_expense' expense.id %}">Delete</a>
+											<form action="{% url 'delete_expense' expense.id %}" method="POST" name="DeleteExpense">
+												{% csrf_token %}
+											<a type="submit">Delete</a>
+											</form>
 										</li>	
 									</ul>
 								</div>
