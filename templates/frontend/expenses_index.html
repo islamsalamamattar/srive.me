@@ -179,7 +179,9 @@
 										<li>
 											<form action="{% url 'delete_expense' expense.id %}" method="POST" name="DeleteExpense">
 												{% csrf_token %}
-											<a href="javascript:{}" onclick="document.getElementById('DeleteExpense').submit(); return false;">Delete</a>
+												<button type="submit" class="text">
+													<div class="">delete </div>
+												</button>
 											</form>
 										</li>	
 									</ul>
