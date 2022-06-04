@@ -179,9 +179,8 @@
 										<li>
 											<form action="{% url 'delete_expense' expense.id %}" method="POST" name="DeleteExpense">
 												{% csrf_token %}
-												<div class="form-group" name="id" value="{{expense.id}}"></div>
 												<div class="form-group">
-													<button type="submit" class="text">
+													<button type="submit" name="deleted" value='True'>
 														<div class="">delete </div>
 													</button>
 												</div>
