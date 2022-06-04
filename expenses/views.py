@@ -53,14 +53,17 @@ def ExpenseIndex(request):
 
 ## delete expense view
 @login_required()
-def DeleteExpense(request, expense_id):
-    try:
-        expense_edit = Expense.objects.get(user=request.user, id=expense_id)
-        expense_edit.deleted = True
-        expense_edit.save()
-        return redirect( 'expenses' )
-    except ObjectDoesNotExist:
-        return redirect( 'expenses' )
+def DeleteExpense(request):
+    if request.method == 'POST':
+        form = ExpenseForm(request.POST)
+        if form.is_valid():
+            expense_edit = form
+            expense_edit.deleted = True
+            expense_edit.save()
+            return redirect( 'expenses' )
+        else:
+            msg = form.errors
+            return redirect( 'expenses' )
 
 ## edit expense veiw
 @login_required()
