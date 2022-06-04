@@ -33,7 +33,7 @@
 										<div class="form-group col-6">
 											<select class="form-control" name="category">
 												<option selected disabled>select category</option>
-												{% for category in context.categories %}
+												{% for category in tod_cat %}
 												<option value="{{ category.id }}">{{ category }}</option>
 												{% endfor %}
 											</select>
