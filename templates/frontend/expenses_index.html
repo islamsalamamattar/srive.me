@@ -164,7 +164,7 @@
 					<li>
 						<div class="widget-list-container bg-theme">
 							<div class="widget-list-media icon">
-								<i class="{{ expense.category.icon }} {{ expense.category.category_type.color}}"></i>
+								<i class="{{ all_expense.category.icon }} {{ all_expense.category.category_type.color}}"></i>
 							</div>
 							<div class="widget-list-content">
 								<h4 class="widget-title">{% if all_expense.note %} {{ all_expense.note}} {% else %}  {{ all_expense.category }} {% endif %} - {{ all_expense.currency}} {{ all_expense.amount|intcomma }}</h4>
