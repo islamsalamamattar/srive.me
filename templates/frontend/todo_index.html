@@ -94,35 +94,38 @@
 				<!-- END not completed -->
 			</div>
 			<div class="col-lg-6 col-sm-12">
-				<!-- BEGIN all todos -->
-				<div class="col-12">									
-					<div class="widget-reminder-header bg-inverse " style="color: white;"> All Todos</div>			
-					
-					<ul class="widget widget-list inverse-mode">
-						{% for todo in all_todos %}
-						<li>
-							<div class="widget-list-container bg-theme">
-								<div class="widget-list-media icon ">
-									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
-								</div>
-								<div class="widget-list-content">
-									<h4 class="widget-title">{{ todo.task }}</h4>
+				<div class="row">
+					<!-- BEGIN all todos -->
+					<div class="col-12">									
+						<div class="widget-reminder-header bg-inverse " style="color: white;"> All Todos</div>			
+						
+						<ul class="widget widget-list inverse-mode">
+							{% for todo in all_todos %}
+							<li>
+								<div class="widget-list-container bg-theme">
+									<div class="widget-list-media icon ">
+										<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
+									</div>
+									<div class="widget-list-content">
+										<h4 class="widget-title">{{ todo.task }}</h4>
 
-									<div class="widget-desc hidden-xs">{{ todo.date_added }}</div>
-								</div>
-								<div class="widget-list-action">
-									<div class="switcher switcher-success pull-left">
-										<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
-										<label for="backup_checkbox"></label>
+										<div class="widget-desc hidden-xs">{{ todo.date_added }}</div>
+									</div>
+									<div class="widget-list-action">
+										<div class="switcher switcher-success pull-left">
+											<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
+											<label for="backup_checkbox"></label>
+										</div>
 									</div>
 								</div>
-							</div>
-						</li>
-						{% endfor %}
-					</ul>
-							
+							</li>
+							{% endfor %}
+						</ul>
+								
+					</div>
+					<!-- END all todos -->
 				</div>
-				<!-- END all todos -->
+
 			</div>
 		</div>
 
