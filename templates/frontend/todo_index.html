@@ -33,14 +33,8 @@
 										<div class="form-group col-6">
 											<select class="form-control" name="category">
 												<option selected disabled>select category</option>
-												{% for category_type in context.category_types %}
-												<optgroup label = "{{ category_type }}">
-													{% for category in context.categories %}
-													{% if category.category_type == category_type %}
-													<option value="{{ category.id }}">{{ category }}</option>
-													{% endif %}
-													{% endfor %}
-												</optgroup>
+												{% for category in context.categories %}
+												<option value="{{ category.id }}">{{ category }}</option>
 												{% endfor %}
 											</select>
 										</div>											
