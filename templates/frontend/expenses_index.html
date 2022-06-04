@@ -168,7 +168,7 @@
 							</div>
 							<div class="widget-list-content">
 								<h4 class="widget-title">{% if all_expense.note %} {{ all_expense.note}} {% else %}  {{ all_expense.category }} {% endif %} - {{ all_expense.currency}} {{ all_expense.amount|intcomma }}</h4>
-								<div class="widget-desc">{{ all_expense.next_due }} - {{ all_expense.payment }} - {{ all_expense.pk }}</div>
+								<div class="widget-desc">{{ all_expense.date }} - {{ all_expense.payment }} - {{ all_expense.pk }}</div>
 							</div>
 							<div class="widget-list-action">
 								<div class="dropdown dropdown-icon">
