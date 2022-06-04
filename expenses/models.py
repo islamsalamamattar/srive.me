@@ -107,11 +107,11 @@ class ExpenseForm(ModelForm):
 class SubscriptionManager(models.Manager):
     ## returns due subscriptions that are set to manual pay
     def to_be_paid_manual(self, user):
-        subscriptions = self.filter(user=user, autopay=False, date__lte=datetime.date.today())
+        subscriptions = self.filter(user=user, autopay=False, next_due__lte=datetime.date.today())
         return subscriptions
     ## auto paying >> creating expense for due subscription set to autopay
     def auto_pay(self, user):
-        subscriptions = self.filter(user=user, autopay=True, date__lte=datetime.today())
+        subscriptions = self.filter(user=user, autopay=True, next_due__lte=datetime.today())
         for subscription in subscriptions:
             payment = Expense(
                 user=user,
