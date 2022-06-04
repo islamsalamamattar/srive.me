@@ -15,5 +15,6 @@ def TodoIndex(request):
     context = {}
     context['not_completed'] = Todo.objects.not_completed(request.user)
     context['all_todos'] = Todo.objects.all_todos(request.user)
+    context['tod_cat'] = Category.objects.all()
     html_template = loader.get_template( 'frontend/todo_index.html' )
     return HttpResponse(html_template.render(context, request))
