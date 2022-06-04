@@ -62,7 +62,7 @@
 				<div class="row">
 					{% for category, todos in not_completed.items %}
 					<div class="col-12">									
-						<div class="widget-reminder-header bg-{{ category.color }} " style="color: white;">{{ category }} - not completed</div>			
+						<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>			
 						
 						<ul class="widget widget-list inverse-mode">
 							{% for todo in todos %}
