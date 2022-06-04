@@ -94,7 +94,7 @@ class Expense(models.Model):
     type = models.CharField('Type', max_length=12, choices = [('S', 'Subsription'), ('I', 'Installment'), ('E', "Expense")], default='E')
     objects = ExpenseManger()
     def __str__(self):
-        return f"{self.category} , {self.amount}"
+        return f"{self.id} - {self.category} , {self.amount}"
 
 # ExpenseForm
 class ExpenseForm(ModelForm):

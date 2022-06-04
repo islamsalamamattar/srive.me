@@ -4,7 +4,7 @@ from .models import *
 
 
 class ExpenseAdmin(ImportExportModelAdmin):
-    list_display = ("category_type", "amount", "date", "category", "note")
+    list_display = ("id", "category_type", "amount", "date", "category", "note")
     search_fields = ["category", "date", "note"]
 
 class CategoryAdmin(ImportExportModelAdmin):
