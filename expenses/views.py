@@ -55,15 +55,11 @@ def ExpenseIndex(request):
 @login_required()
 def DeleteExpense(request,expense_id):
     if request.method == 'POST':
-        form = ExpenseForm(request.POST)
-        if form.is_valid():
-            expense_edit = Expense.objects.get(id=expense_id)
-            expense_edit.deleted = True
-            expense_edit.save()
-            return redirect( 'expenses' )
-        else:
-            msg = form.errors
-            return redirect( 'expenses' )
+        expense_edit = Expense.objects.get(id=expense_id)
+        expense_edit.deleted = True
+        expense_edit.save()
+        return redirect( 'expenses' )
+
 
 ## edit expense veiw
 @login_required()
