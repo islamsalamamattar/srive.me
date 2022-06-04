@@ -160,15 +160,15 @@
 			<div class="col-lg-6 col-sm-12">	
 				<div class="widget-reminder-header bg-inverse" style="color: white;">LATEST EXPENSES</div>			
 				<ul class="widget widget-list inverse-mode">
-					{% for expense in context.history %}
+					{% for all_expense in context.history %}
 					<li>
 						<div class="widget-list-container bg-theme">
 							<div class="widget-list-media icon">
 								<i class="{{ expense.category.icon }} {{ expense.category.category_type.color}}"></i>
 							</div>
 							<div class="widget-list-content">
-								<h4 class="widget-title">{% if expense.note %} {{ expense.note}} {% else %}  {{ expense.category }} {% endif %} - {{ expense.currency}} {{ expense.amount|intcomma }}</h4>
-								<div class="widget-desc">{{ expense.date }} - {{ expense.payment }} - {{ expense.id }}</div>
+								<h4 class="widget-title">{% if all_expense.note %} {{ all_expense.note}} {% else %}  {{ all_expense.category }} {% endif %} - {{ all_expense.currency}} {{ all_expense.amount|intcomma }}</h4>
+								<div class="widget-desc">{{ all_expense.date }} - {{ all_expense.payment }} - {{ all_expense.id }}</div>
 							</div>
 							<div class="widget-list-action">
 								<div class="dropdown dropdown-icon">
@@ -177,7 +177,7 @@
 										<li><a href="#">View/edit</a></li>
 										<li><a href="#">Analytics</a></li>
 										<li>
-											<form action="{% url 'delete_expense' expense.id %}" method="POST" name="DeleteExpense">
+											<form action="{% url 'delete_expense' all_expense.id %}" method="POST" name="DeleteExpense">
 												{% csrf_token %}
 												<div class="form-group">
 													<button type="submit" name="deleted" value='True'>
