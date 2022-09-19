@@ -103,7 +103,7 @@ class ExpenseForm(ModelForm):
         fields = ('amount', 'currency', 'category', 'note', 'deleted', 'payment')
 
 
-# Subscriptions Mabager
+# Subscriptions Manager
 class SubscriptionManager(models.Manager):
     ## returns due subscriptions that are set to manual pay
     def to_be_paid_manual(self, user):
