@@ -16,7 +16,7 @@
 						<div class="widget-reminder-header bg-inverse" style="color: white;">ADD TODO</div>						
 						<div class="panel panel-inverse">
 							<div class="panel-body inverse-mode bg-theme">
-								<form action="{% url 'expenses' %}" method="POST" name="Add_expense">
+								<form action="{% url 'todo' %}" method="POST" name="Add_expense">
 									{% csrf_token %}
 
 									<!-- Begin note -->
