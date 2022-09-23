@@ -16,5 +16,19 @@ def TodoIndex(request):
     context['not_completed'] = Todo.objects.not_completed(request.user)
     context['all_todos'] = Todo.objects.all_todos(request.user)
     context['tod_cat'] = Category.objects.all()
-    html_template = loader.get_template( 'frontend/todo_index.html' )
-    return HttpResponse(html_template.render(context, request))
+    if request.method == 'POST':
+        form = TodoForm(request.POST)
+        if form.is_valid():
+            new_todo = form.save(commit=False)
+            new_todo.user = request.user
+            new_todo.date = date.today()
+            new_todo.category_type = new_todo.category.category_type
+            new_todo.save()
+            return redirect( 'todo' )
+        else:
+            msg = form.errors
+            return render(request, 'frontend/todo_index.html', {'context':context, 'msg':msg})
+    else:
+        Subscription.objects.auto_pay(request.user)
+        msg = None
+        return render(request, 'frontend/todo_index.html', {'context':context, 'msg':msg})

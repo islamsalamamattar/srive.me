@@ -13,7 +13,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
 
-# Todo
+# TodoManager
 class TodoManager(models.Manager):
     def not_completed(self, user):
         categories = Category.objects.filter(Q(user=user) | Q (user__id=1))
@@ -26,7 +26,7 @@ class TodoManager(models.Manager):
         all_todos = self.filter(user=user)
         return all_todos
 
-
+# Todo
 class Todo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_added = models.DateField(auto_now=False, auto_now_add=True, )
@@ -37,3 +37,10 @@ class Todo(models.Model):
     objects = TodoManager()
     def __str__(self):
         return f"{self.category} , {self.task}"
+
+# TodoForm
+class TodoForm(ModelForm):
+    class Meta:
+        model = Todo
+        fields = ('task', 'category')
+     
