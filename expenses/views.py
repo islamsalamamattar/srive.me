@@ -59,7 +59,6 @@ def DeleteExpense(request, expense_id):
     expense_edit.save()
     return redirect( 'expenses' )
 
-
 ## edit expense veiw
 @login_required()
 def EditExpense(request, expense_id):
