@@ -60,6 +60,7 @@
 			<!-- END add_expenses -->
 			<!-- BEGIN not completed -->
 			<div class="row">
+				{{ context }}
 				{{ context.not_completed }}
 				{% for todos in context.not_completed.items %}
 				<div class="col-12">
