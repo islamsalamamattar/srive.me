@@ -60,9 +60,10 @@
 			<!-- END add_expenses -->
 			<!-- BEGIN not completed -->
 			<div class="row">
+				{% for category in context.tod_cat %}
 				{% for todos in context.not_completed.items %}
 				<div class="col-12">
-					{% for category in context.tod_cat %}								
+													
 					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>			
 					
 					<ul class="widget widget-list inverse-mode">
@@ -85,10 +86,10 @@
 									</div>
 								</div>
 							</li>
-							{% endfor %}
 						</ul>
 					{% endfor %}		
 				</div>
+				{% endfor %}
 				{% endfor %}
 			</div>
 			<!-- END not completed -->
