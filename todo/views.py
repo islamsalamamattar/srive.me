@@ -29,6 +29,5 @@ def TodoIndex(request):
             msg = form.errors
             return render(request, 'frontend/todo_index.html', {'context':context, 'msg':msg})
     else:
-        Subscription.objects.auto_pay(request.user)
         msg = None
         return render(request, 'frontend/todo_index.html', {'context':context, 'msg':msg})
