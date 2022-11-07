@@ -63,31 +63,30 @@
 				{% for category in context.tod_cat %}
 				{% for todos in context.not_completed.items %}
 				<div class="col-12">
-													
-					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>			
-					
 					{% for todo in todos %}
 					{% if todo.category == category %}
+													
+					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>								
 					<ul class="widget widget-list inverse-mode">
-							<li>
-								<div class="widget-list-container bg-theme">
-									<div class="widget-list-media icon ">
-										<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
-									</div>
-									<div class="widget-list-content">
-										<h4 class="widget-title">{{ todo.task }}</h4>
+						<li>
+							<div class="widget-list-container bg-theme">
+								<div class="widget-list-media icon ">
+									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
+								</div>
+								<div class="widget-list-content">
+									<h4 class="widget-title">{{ todo.task }}</h4>
 
-										<div class="widget-desc hidden-xs">{{ todo.date_added }}</div>
-									</div>
-									<div class="widget-list-action">
-										<div class="switcher switcher-success pull-left">
-											<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
-											<label for="backup_checkbox"></label>
-										</div>
+									<div class="widget-desc hidden-xs">{{ todo.date_added }}</div>
+								</div>
+								<div class="widget-list-action">
+									<div class="switcher switcher-success pull-left">
+										<input type="checkbox" name="backup_checkbox" id="backup_checkbox" value="1">
+										<label for="backup_checkbox"></label>
 									</div>
 								</div>
-							</li>
-						</ul>
+							</div>
+						</li>
+					</ul>
 					{% endif %}
 					{% endfor %}		
 				</div>
@@ -104,7 +103,7 @@
 					<div class="widget-reminder-header bg-inverse " style="color: white;"> All Todos</div>			
 					
 					<ul class="widget widget-list inverse-mode">
-						{% for todo in all_todos %}
+						{% for todo in context.all_todos %}
 						<li>
 							<div class="widget-list-container bg-theme">
 								<div class="widget-list-media icon ">
