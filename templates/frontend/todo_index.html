@@ -66,8 +66,9 @@
 													
 					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>			
 					
+					{% for todo in todos %}
+					{% if todo.category EQ category %}
 					<ul class="widget widget-list inverse-mode">
-						{% for todo in todos %}
 							<li>
 								<div class="widget-list-container bg-theme">
 									<div class="widget-list-media icon ">
@@ -87,6 +88,7 @@
 								</div>
 							</li>
 						</ul>
+					{% endif %}
 					{% endfor %}		
 				</div>
 				{% endfor %}
