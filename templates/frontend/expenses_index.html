@@ -177,7 +177,7 @@
 										<li><a href="#">View/edit</a></li>
 										<li><a href="#">Analytics</a></li>
 										<li>
-											<form action="{% url 'delete_expense' %}" method="POST" name="DeleteExpense">
+											<form action="{% url 'expenses' %}" method="POST" name="DeleteExpense">
 												{% csrf_token %}
 												<div class="form-group">
 													<button type="submit" name="deleted" value='True'>
