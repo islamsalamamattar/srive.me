@@ -67,7 +67,7 @@
 					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>			
 					
 					{% for todo in todos %}
-					{% if todo.category EQ category %}
+					{% if todo.category == category %}
 					<ul class="widget widget-list inverse-mode">
 							<li>
 								<div class="widget-list-container bg-theme">
