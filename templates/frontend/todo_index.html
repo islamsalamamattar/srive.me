@@ -60,11 +60,10 @@
 			<!-- END add_expenses -->
 			<!-- BEGIN not completed -->
 			<div class="row">
-				
+				{{ context.not_completed }}
 				{% for todos in context.not_completed.items %}
 				<div class="col-12">
 					{% for todo in todos %}
-					{{ todo }}
 					{% for category in context.tod_cat %}
 					{% if todo.category == category %}
 													
