@@ -6,197 +6,197 @@
 {% block content %}
 	<!-- BEGIN #content -->
 
-		<!-- BEGIN row -->
-		<div class="row">
-			
-			<!-- BEGIN col-6 -->
-			<div class="col-lg-6 col-sm-12">
+	<!-- BEGIN row -->
+	<div class="row">
+		
+		<!-- BEGIN col-6 -->
+		<div class="col-lg-6 col-sm-12">
 
 
-				<!-- BEGIN Add_expense -->
-				<div class="row">
-					<div class="col-12">
-						
-						<div class="widget-reminder-header bg-inverse" style="color: white;">ADD EXPENSE</div>						
-						<div class="panel panel-inverse">
-							<div class="panel-body inverse-mode bg-theme">
-								<form action="{% url 'expenses' %}" method="POST" name="Add_expense">
-									{% csrf_token %}
-									<!-- BEGIN row -->
-									<div class="row">
-										<!-- BEGIN amount -->
-										<div class="form-group col-5">
-											<input type="number" class="form-control" name="amount" placeholder="AMOUNT">
-										</div>
-										<!-- END amount -->
-
-										<!-- BEGIN currency -->
-										<div class="form-group col-3">
-											<select class="form-control" name="currency">
-												{% for currency in context.currencies %}
-												<option value="{{ currency }}">{{ currency }}</option>
-												{% endfor %}
-											</select>
-										</div>
-										<!-- END currency -->
-
-										<!-- BEGIN select card -->		
-										<div class="form-group col-4">
-											<select class="form-control" name="payment">
-												{% for card in context.cards %}
-												<option value="{{ card.id }}">{{ card }}</option>
-												{% endfor %}
-											</select>
-										</div>											
-									<!-- END select card -->
+			<!-- BEGIN Add_expense -->
+			<div class="row">
+				<div class="col-12">
+					
+					<div class="widget-reminder-header bg-inverse" style="color: white;">ADD EXPENSE</div>						
+					<div class="panel panel-inverse">
+						<div class="panel-body inverse-mode bg-theme">
+							<form action="{% url 'expenses' %}" method="POST" name="Add_expense">
+								{% csrf_token %}
+								<!-- BEGIN row -->
+								<div class="row">
+									<!-- BEGIN amount -->
+									<div class="form-group col-5">
+										<input type="number" class="form-control" name="amount" placeholder="AMOUNT">
 									</div>
-									<!-- END row -->
+									<!-- END amount -->
 
-									<!-- Begin note -->
-									<div class="row">
-										<div class="form-group col-12">
-											<input type="text" class="form-control" name="note" placeholder="Details ......">
-										</div>
+									<!-- BEGIN currency -->
+									<div class="form-group col-3">
+										<select class="form-control" name="currency">
+											{% for currency in context.currencies %}
+											<option value="{{ currency }}">{{ currency }}</option>
+											{% endfor %}
+										</select>
 									</div>
-									<!-- END note -->
+									<!-- END currency -->
 
-									<!-- BEGIN row -->
-									<div class="row">
-										<!-- BEGIN select category -->		
-										<div class="form-group col-6">
-											<select class="form-control" name="category">
-												<option selected disabled>select category</option>
-												{% for category_type in context.category_types %}
-												<optgroup label = "{{ category_type }}">
-													{% for category in context.categories %}
-													{% if category.category_type == category_type %}
-													<option value="{{ category.id }}">{{ category }}</option>
-													{% endif %}
-													{% endfor %}
-												</optgroup>
+									<!-- BEGIN select card -->		
+									<div class="form-group col-4">
+										<select class="form-control" name="payment">
+											{% for card in context.cards %}
+											<option value="{{ card.id }}">{{ card }}</option>
+											{% endfor %}
+										</select>
+									</div>											
+								<!-- END select card -->
+								</div>
+								<!-- END row -->
+
+								<!-- Begin note -->
+								<div class="row">
+									<div class="form-group col-12">
+										<input type="text" class="form-control" name="note" placeholder="Details ......">
+									</div>
+								</div>
+								<!-- END note -->
+
+								<!-- BEGIN row -->
+								<div class="row">
+									<!-- BEGIN select category -->		
+									<div class="form-group col-6">
+										<select class="form-control" name="category">
+											<option selected disabled>select category</option>
+											{% for category_type in context.category_types %}
+											<optgroup label = "{{ category_type }}">
+												{% for category in context.categories %}
+												{% if category.category_type == category_type %}
+												<option value="{{ category.id }}">{{ category }}</option>
+												{% endif %}
 												{% endfor %}
-											</select>
-										</div>											
-										<!-- END select category -->
-										<!-- BEGIN select store -->		
-										<div class="form-group col-6">
-
-											<button type="submit" class="btn bg-inverse col-12">
-												<div class=""><i class="ti-save"></i>&nbsp; Expense </div>
-											</button>
-										</div>									
+											</optgroup>
+											{% endfor %}
+										</select>
+									</div>											
 									<!-- END select category -->
-									</div>
+									<!-- BEGIN select store -->		
+									<div class="form-group col-6">
 
-									{% if msg %}
-									<span class="text-danger">{{ msg }}</span>
-									{% endif %}
-								</form>
-							</div>
+										<button type="submit" class="btn bg-inverse col-12">
+											<div class=""><i class="ti-save"></i>&nbsp; Expense </div>
+										</button>
+									</div>									
+								<!-- END select category -->
+								</div>
+
+								{% if msg %}
+								<span class="text-danger">{{ msg }}</span>
+								{% endif %}
+							</form>
 						</div>
 					</div>
 				</div>
-				<!-- END add_expenses -->
+			</div>
+			<!-- END add_expenses -->
 
 
-				<div class="row"><div class="col-12"></div></div>
+			<div class="row"><div class="col-12"></div></div>
 
-				<div class="row">
+			<div class="row">
 
 
-					<!-- BEGIN Category Summary -->
-					<div class="col-12">						
-						<div class="widget-reminder-header bg-inverse " style="color: white;">CATEGORIES SUMMARY</div>			
-						<ul class="widget widget-list inverse-mode">
+				<!-- BEGIN Category Summary -->
+				<div class="col-12">						
+					<div class="widget-reminder-header bg-inverse " style="color: white;">CATEGORIES SUMMARY</div>			
+					<ul class="widget widget-list inverse-mode">
 
-							{% for category in context.summary %}
+						{% for category in context.summary %}
+						
+						<li>
 							
-							<li>
-								
-								<div class="widget-list-container bg-theme">
-									<div class="widget-list-media icon ">
-										<i class="{{ category.category_type__icon}} {{ category.category_type__color}}"></i>
-									</div>
-									<div class="widget-list-content">
-											<h4 class="widget-title">{{ category.category_type__name }}<span class="f-w-400"> - EGP {{ category.total|intcomma }}</span></h4>
-									</div>
+							<div class="widget-list-container bg-theme">
+								<div class="widget-list-media icon ">
+									<i class="{{ category.category_type__icon}} {{ category.category_type__color}}"></i>
 								</div>
-							</li>
-							{% endfor %}
-						</ul>
-					</div>
-					<!-- END category Summary -->
-
-
-					<!-- BEGIN Payment Summary -->
-					<div class="col-12">						
-						<div class="widget-reminder-header bg-inverse " style="color: white;">PAYMENTS SUMMARY</div>			
-						<ul class="widget widget-list inverse-mode">
-
-							{% for method in context.payments %}
-							
-							<li>
-								
-								<div class="widget-list-container bg-theme">
-									<div class="widget-list-media icon ">
-										<i class="ti-credit-card bg-theme"></i>
-									</div>
-									<div class="widget-list-content">
-											<h4 class="widget-title">{{ method.payment__name }} - EGP {{ method.total|intcomma }}</h4>
-									</div>
+								<div class="widget-list-content">
+										<h4 class="widget-title">{{ category.category_type__name }}<span class="f-w-400"> - EGP {{ category.total|intcomma }}</span></h4>
 								</div>
-							</li>
-							{% endfor %}
-						</ul>
-					</div>
-					<!-- END Payment Summary -->
-
-
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
 				</div>
-			</div>
-			<!-- END col-6 -->
+				<!-- END category Summary -->
 
-			<!-- BEGIN Latest Expenses -->
-			<div class="col-lg-6 col-sm-12">	
-				<div class="widget-reminder-header bg-inverse" style="color: white;">LATEST EXPENSES</div>			
-				<ul class="widget widget-list inverse-mode">
-					{% for all_expense in context.history %}
-					<li>
-						<div class="widget-list-container bg-theme">
-							<div class="widget-list-media icon">
-								<i class="{{ all_expense.category.icon }} {{ all_expense.category.category_type.color}}"></i>
-							</div>
-							<div class="widget-list-content">
-								<h4 class="widget-title">{% if all_expense.note %} {{ all_expense.note}} {% else %}  {{ all_expense.category }} {% endif %} - {{ all_expense.currency}} {{ all_expense.amount|intcomma }}</h4>
-								<div class="widget-desc">{{ all_expense.date }} - {{ all_expense.payment }} - {{ all_expense.pk }}</div>
-							</div>
-							<div class="widget-list-action">
-								<div class="dropdown dropdown-icon">
-									<a href="#" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
-									<ul class="dropdown-menu dropdown-menu-right">
-										<li><a href="#">View/edit</a></li>
-										<li><a href="#">Analytics</a></li>
-										<li>
-											<form action="{% url 'expenses' %}" method="POST" name="DeleteExpense">
-												{% csrf_token %}
-												<div class="form-group">
-													<button type="submit" name="deleted" value='True'>
-														<div class="">delete </div>
-													</button>
-												</div>
-											</form>
-										</li>	
-									</ul>
+
+				<!-- BEGIN Payment Summary -->
+				<div class="col-12">						
+					<div class="widget-reminder-header bg-inverse " style="color: white;">PAYMENTS SUMMARY</div>			
+					<ul class="widget widget-list inverse-mode">
+
+						{% for method in context.payments %}
+						
+						<li>
+							
+							<div class="widget-list-container bg-theme">
+								<div class="widget-list-media icon ">
+									<i class="ti-credit-card bg-theme"></i>
+								</div>
+								<div class="widget-list-content">
+										<h4 class="widget-title">{{ method.payment__name }} - EGP {{ method.total|intcomma }}</h4>
 								</div>
 							</div>
-						</div>
-					</li>
-					{% endfor %}
-				</ul>
-			</div>
-			<!-- END Latest Expenses -->
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<!-- END Payment Summary -->
 
+
+			</div>
 		</div>
+		<!-- END col-6 -->
+
+		<!-- BEGIN Latest Expenses -->
+		<div class="col-lg-6 col-sm-12">	
+			<div class="widget-reminder-header bg-inverse" style="color: white;">LATEST EXPENSES</div>			
+			<ul class="widget widget-list inverse-mode">
+				{% for all_expense in context.history %}
+				<li>
+					<div class="widget-list-container bg-theme">
+						<div class="widget-list-media icon">
+							<i class="{{ all_expense.category.icon }} {{ all_expense.category.category_type.color}}"></i>
+						</div>
+						<div class="widget-list-content">
+							<h4 class="widget-title">{% if all_expense.note %} {{ all_expense.note}} {% else %}  {{ all_expense.category }} {% endif %} - {{ all_expense.currency}} {{ all_expense.amount|intcomma }}</h4>
+							<div class="widget-desc">{{ all_expense.date }} - {{ all_expense.payment }} - {{ all_expense.pk }}</div>
+						</div>
+						<div class="widget-list-action">
+							<div class="dropdown dropdown-icon">
+								<a href="#" data-toggle="dropdown"><i class="ti-more-alt"></i></a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a href="#">View/edit</a></li>
+									<li><a href="#">Analytics</a></li>
+									<li>
+										<form action="{% url 'expenses' %}" method="POST" name="DeleteExpense">
+											{% csrf_token %}
+											<div class="form-group">
+												<button type="submit" name="deleted" value='True'>
+													<div class="">delete </div>
+												</button>
+											</div>
+										</form>
+									</li>	
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<!-- END Latest Expenses -->
+
+	</div>
 
 	<!-- END #content -->
 {% endblock content %}

@@ -29,13 +29,11 @@
 
 								<!-- BEGIN row -->
 								<div class="row">
-									<!-- BEGIN select category -->
-									{{ tod_cat }}	
+									<!-- BEGIN select category -->	
 									<div class="form-group col-6">
 										<select class="form-control" name="category">
-											{{ tod_cat }}
 											<option selected disabled>select category</option>
-											{% for category in tod_cat %}
+											{% for category in context.tod_cat %}
 											<option value="{{ category.id }}">{{ category }}</option>
 											{% endfor %}
 										</select>
@@ -62,7 +60,7 @@
 			<!-- END add_expenses -->
 			<!-- BEGIN not completed -->
 			<div class="row">
-				{% for category, todos in not_completed.items %}
+				{% for category, todos in context.tod_cat, context.not_completed.items %}
 				<div class="col-12">									
 					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>			
 					
