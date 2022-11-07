@@ -32,6 +32,7 @@
 									<!-- BEGIN select category -->		
 									<div class="form-group col-6">
 										<select class="form-control" name="category">
+											{{ tod_cat }}
 											<option selected disabled>select category</option>
 											{% for category in tod_cat %}
 											<option value="{{ category.id }}">{{ category }}</option>
