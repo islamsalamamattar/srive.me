@@ -64,7 +64,9 @@
 				{% for category in context.not_completed %}
 				{% for queryset in context.not_completed.values %}
 				{% if queryset.count > 0 %}
-				<h4>test -  {{ queryset.values }} </h4>
+				{% for query in queryset %}
+				<h4>task -  {{ query.task }} </h4>
+				{% endfor %}
 				{% endif %}
 				{% endfor %}
 				<div class="col-12">
