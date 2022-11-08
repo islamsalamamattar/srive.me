@@ -63,9 +63,8 @@
 				{% for category in context.not_completed.items %}
 				<div class="col-12">
 					<h4>categories here</h4> {{ category }}	
-					{% for item in category %}
-					<h4>items here</h4> {{ item }}				
-					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ item.category }} - not completed</div>								
+								
+					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category.category }} - not completed</div>								
 					<ul class="widget widget-list inverse-mode">
 						<li>
 							<div class="widget-list-container bg-theme">
@@ -73,9 +72,9 @@
 									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
 								</div>
 								<div class="widget-list-content">
-									<h4 class="widget-title">{{ item.task }}</h4>
+									<h4 class="widget-title">{{ category.task }}</h4>
 
-									<div class="widget-desc hidden-xs">{{ item.date_added }}</div>
+									<div class="widget-desc hidden-xs">{{ category.date_added }}</div>
 								</div>
 								<div class="widget-list-action">
 									<div class="switcher switcher-success pull-left">
@@ -85,9 +84,7 @@
 								</div>
 							</div>
 						</li>
-					</ul>
-
-					{% endfor %}		
+					</ul>		
 				</div>
 				{% endfor %}
 			</div>
