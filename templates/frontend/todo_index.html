@@ -62,6 +62,9 @@
 			<div class="row">
 				{{ context.not_completed }}
 				{% for category in context.not_completed %}
+				{% for queryset in context.not_completed %}
+				{{ queryset }}
+				{% endfor %}
 				<div class="col-12">
 					<h4>categories here - {{ category.value }} </h4> 
 								
