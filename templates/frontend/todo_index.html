@@ -62,8 +62,8 @@
 			<div class="row">
 				{% for category in context.not_completed.items %}
 				<div class="col-12">
-					{% for items in category %}
-						{% for item in items %}					
+					{% for item in category %}
+									
 					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ item.category }} - not completed</div>								
 					<ul class="widget widget-list inverse-mode">
 						<li>
@@ -85,7 +85,7 @@
 							</div>
 						</li>
 					</ul>
-					{% endfor %}
+
 					{% endfor %}		
 				</div>
 				{% endfor %}
