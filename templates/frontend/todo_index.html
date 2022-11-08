@@ -65,7 +65,7 @@
 				{% for queryset in context.not_completed.values %}
 				{% if queryset.count > 0 %}
 				{% for query in queryset %}
-				<h4>task -  {{ query.task }} </h4>
+				<h4>task -  {{ query.task }} - {{ query.date_added }}</h4>
 				{% endfor %}
 				{% endif %}
 				{% endfor %}
