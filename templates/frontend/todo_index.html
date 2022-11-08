@@ -62,7 +62,7 @@
 			<div class="row">
 				{{ context.not_completed }}
 				{% for category in context.not_completed %}
-				{% for queryset in context.not_completed %}
+				{% for queryset in context.not_completed.values %}
 				{{ queryset }}
 				{% endfor %}
 				<div class="col-12">
