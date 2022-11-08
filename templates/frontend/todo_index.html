@@ -61,7 +61,7 @@
 			<!-- BEGIN not completed -->
 			<div class="row">
 				{{ context.not_completed }}
-				{% for category in context.not_completed %}
+				{% for category, queryset in context.not_completed %}
 				<div class="col-12">
 					<h4>categories here - {{ category }} </h4> 
 								
@@ -73,7 +73,7 @@
 									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
 								</div>
 								<div class="widget-list-content">
-									<h4 class="widget-title">{{ category.value }}</h4>
+									<h4 class="widget-title">{{ queryset }}</h4>
 
 									<div class="widget-desc hidden-xs">{{ category.date_added }}</div>
 								</div>
