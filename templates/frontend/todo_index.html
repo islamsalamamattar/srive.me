@@ -61,16 +61,14 @@
 			<!-- BEGIN not completed -->
 			<div class="row">
 				{{ context.not_completed }}
-				{% for category in context.not_completed %}
-				{% for queryset in context.not_completed.values %}
-				{% if queryset.count > 0 %}
-				{% for query in queryset %}
-				<h4>task -  {{query.category}} - {{ query.task }} - {{ query.date_added }}</h4>
-				{% endfor %}
-				{% endif %}
-				{% endfor %}
+				{% for category, queryset in context.not_completed.items %}
 				<div class="col-12">
-					<h4>categories here - {{ category.value }} </h4> 
+					<h4>categories here - {{ category }} </h4>
+					{% if queryset.count > 0 %}
+					{% for query in queryset %}
+					<h4>task -  {{query.category}} - {{ query.task }} - {{ query.date_added }}</h4>
+					{% endfor %}
+					{% endif %}
 								
 					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>								
 					<ul class="widget widget-list inverse-mode">
