@@ -61,7 +61,7 @@
 			<!-- BEGIN not completed -->
 			<div class="row">
 				{{ context.not_completed }}
-				{% for category, queryset in context.not_completed %}
+				{% for category, queryset in context.not_completed, context.not_completed.values %}
 				<div class="col-12">
 					<h4>categories here - {{ category }} </h4> 
 								
