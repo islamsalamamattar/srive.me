@@ -63,12 +63,9 @@
 				{{ context.not_completed }}
 				{% for category, queryset in context.not_completed.items %}
 				<div class="col-12">
-					<h4>categories here - {{ category }} </h4>
 					{% if queryset.count > 0 %}
 					{% for query in queryset %}
 					<h4>task -  {{query.category}} - {{ query.task }} - {{ query.date_added }}</h4>
-					{% endfor %}
-					{% endif %}
 								
 					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ category }} - not completed</div>								
 					<ul class="widget widget-list inverse-mode">
@@ -78,9 +75,9 @@
 									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
 								</div>
 								<div class="widget-list-content">
-									<h4 class="widget-title">{{ queryset }}</h4>
+									<h4 class="widget-title">{{ query.task }}</h4>
 
-									<div class="widget-desc hidden-xs">{{ category.date_added }}</div>
+									<div class="widget-desc hidden-xs">{{ query.date_added }}</div>
 								</div>
 								<div class="widget-list-action">
 									<div class="switcher switcher-success pull-left">
@@ -90,7 +87,10 @@
 								</div>
 							</div>
 						</li>
-					</ul>		
+					</ul>
+					{% endfor %}
+					{% endif %}
+					
 				</div>
 				{% endfor %}
 			</div>
