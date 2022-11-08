@@ -60,11 +60,11 @@
 			<!-- END add_expenses -->
 			<!-- BEGIN not completed -->
 			<div class="row">
-				{% for todos in context.not_completed.items %}
+				{% for category in context.not_completed.items %}
 				<div class="col-12">
-					{% for todo in todos %}
-						{{ todo }}							
-					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ todo.category }} - not completed</div>								
+					{% for items in category %}
+						{% for item in items %}					
+					<div class="widget-reminder-header {{ category.color }} " style="color: white;">{{ item.category }} - not completed</div>								
 					<ul class="widget widget-list inverse-mode">
 						<li>
 							<div class="widget-list-container bg-theme">
@@ -72,9 +72,9 @@
 									<i class="{{ todo.category.icon }} {{ todo.category.color }}"></i>
 								</div>
 								<div class="widget-list-content">
-									<h4 class="widget-title">{{ todo.task }}</h4>
+									<h4 class="widget-title">{{ item.task }}</h4>
 
-									<div class="widget-desc hidden-xs">{{ todo.date_added }}</div>
+									<div class="widget-desc hidden-xs">{{ item.date_added }}</div>
 								</div>
 								<div class="widget-list-action">
 									<div class="switcher switcher-success pull-left">
@@ -85,6 +85,7 @@
 							</div>
 						</li>
 					</ul>
+					{% endfor %}
 					{% endfor %}		
 				</div>
 				{% endfor %}
